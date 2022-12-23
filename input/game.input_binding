@@ -1,13 +1,13 @@
 key_trigger {
-  input: KEY_LEFT
+  input: KEY_A
   action: "left"
 }
 key_trigger {
-  input: KEY_RIGHT
+  input: KEY_D
   action: "right"
 }
 key_trigger {
-  input: KEY_SPACE
+  input: KEY_W
   action: "jump"
 }
 mouse_trigger {
