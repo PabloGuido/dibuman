@@ -13,6 +13,7 @@ input_method = HiddenInputField
 
 [project]
 title = Dibuman
+dependencies#0 = https://github.com/defold/extension-spine/archive/main.zip
 
 [physics]
 debug = 1

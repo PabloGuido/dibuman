@@ -1,0 +1,805 @@
+{
+  "skeleton": {
+    "hash": "EwkPsCmV4ltCjBv1+pSqGwP2Ukg",
+    "spine": "4.0.64",
+    "x": -161.95,
+    "y": -11.1,
+    "width": 217.39,
+    "height": 283.95,
+    "images": "../",
+    "audio": ""
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "cabeza",
+      "parent": "root",
+      "length": 87.97,
+      "rotation": 90.45,
+      "x": -9.08,
+      "y": 181.95
+    },
+    {
+      "name": "cuerpo",
+      "parent": "root",
+      "length": 102,
+      "rotation": 91.39,
+      "x": -8.87,
+      "y": 77.24
+    },
+    {
+      "name": "brazo_izq",
+      "parent": "root",
+      "length": 57.52,
+      "rotation": -105.47,
+      "x": -63.32,
+      "y": 186.64
+    },
+    {
+      "name": "brazo_der",
+      "parent": "root",
+      "length": 52.58,
+      "rotation": -41.95,
+      "x": 6.47,
+      "y": 130.21
+    },
+    {
+      "name": "p_izq",
+      "parent": "root",
+      "length": 64.12,
+      "rotation": -105.22,
+      "x": -26.2,
+      "y": 67.84
+    },
+    {
+      "name": "p_der",
+      "parent": "root",
+      "length": 63.55,
+      "rotation": -71.85,
+      "x": 4.99,
+      "y": 65.86
+    },
+    {
+      "name": "gaver",
+      "parent": "root",
+      "length": 14,
+      "rotation": -81.87,
+      "x": -7.39,
+      "y": 58.93
+    },
+    {
+      "name": "capa",
+      "parent": "root",
+      "length": 92.54,
+      "rotation": -124.54,
+      "x": -51.44,
+      "y": 173.77
+    }
+  ],
+  "slots": [
+    {
+      "name": "capa",
+      "bone": "capa",
+      "attachment": "capa"
+    },
+    {
+      "name": "brazo_der",
+      "bone": "brazo_der",
+      "attachment": "brazo_der"
+    },
+    {
+      "name": "pie_der",
+      "bone": "p_der",
+      "attachment": "pie_der"
+    },
+    {
+      "name": "gaver",
+      "bone": "gaver",
+      "attachment": "gaver"
+    },
+    {
+      "name": "pie_izq",
+      "bone": "p_izq",
+      "attachment": "pie_izq"
+    },
+    {
+      "name": "cuerpo",
+      "bone": "cuerpo",
+      "attachment": "cuerpo"
+    },
+    {
+      "name": "brazo_izq",
+      "bone": "brazo_izq",
+      "attachment": "brazo_izq"
+    },
+    {
+      "name": "cabeza",
+      "bone": "cabeza",
+      "attachment": "cabeza"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "cabeza": {
+          "cabeza": {
+            "x": 43.09,
+            "y": 3.39,
+            "rotation": -90,
+            "width": 86,
+            "height": 95
+          }
+        },
+        "gaver": {
+          "gaver": {
+            "x": -3.84,
+            "y": -9.37,
+            "rotation": 81.87,
+            "width": 51,
+            "height": 39
+          },
+          "puno": {
+            "x": 0.5,
+            "y": 0.5,
+            "width": 175,
+            "height": 79
+          }
+        },
+        "capa": {
+          "capa": {
+            "x": 59.18,
+            "y": -18.76,
+            "rotation": 124.54,
+            "width": 123,
+            "height": 115
+          }
+        },
+        "brazo_der": {
+          "brazo_der": {
+            "x": 28.1,
+            "y": 1.61,
+            "rotation": 41.95,
+            "width": 54,
+            "height": 55
+          }
+        },
+        "pie_der": {
+          "pie_der": {
+            "x": 28.7,
+            "y": 5.46,
+            "rotation": 71.85,
+            "width": 54,
+            "height": 94
+          }
+        },
+        "brazo_izq": {
+          "brazo_izq": {
+            "x": 42.78,
+            "y": 13.34,
+            "rotation": 105.47,
+            "width": 47,
+            "height": 101
+          }
+        },
+        "cuerpo": {
+          "cuerpo": {
+            "x": 57.99,
+            "y": 6.91,
+            "rotation": -91.39,
+            "width": 113,
+            "height": 134
+          }
+        },
+        "pie_izq": {
+          "pie_izq": {
+            "x": 30.14,
+            "y": -0.55,
+            "rotation": 105.22,
+            "width": 49,
+            "height": 100
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "golpe": {
+      "slots": {
+        "gaver": {
+          "attachment": [
+            {
+              "time": 0.1667,
+              "name": "puno"
+            }
+          ]
+        }
+      },
+      "bones": {
+        "cabeza": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1333,
+              "value": -12.08
+            },
+            {
+              "time": 0.2333,
+              "value": 37.57
+            },
+            {
+              "time": 0.3,
+              "value": 35.89
+            },
+            {
+              "time": 0.3667,
+              "value": 37.57
+            },
+            {
+              "time": 0.4333,
+              "value": 35.89
+            },
+            {
+              "time": 0.5,
+              "value": 37.57
+            }
+          ],
+          "translate": [
+            {
+              "time": 0.2333,
+              "x": -9.33,
+              "y": -5.74
+            }
+          ]
+        },
+        "cuerpo": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1333,
+              "value": -10.1
+            },
+            {
+              "time": 0.2333,
+              "value": 9.23
+            },
+            {
+              "time": 0.3,
+              "value": 10.32
+            },
+            {
+              "time": 0.3667,
+              "value": 9.23
+            },
+            {
+              "time": 0.4333,
+              "value": 9.67
+            },
+            {
+              "time": 0.5,
+              "value": 9.23
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.1333,
+              "x": -14.2,
+              "y": 2.17
+            },
+            {
+              "time": 0.2333,
+              "x": -1.97,
+              "y": -4.01
+            }
+          ]
+        },
+        "p_izq": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1333,
+              "value": 24.12
+            },
+            {
+              "time": 0.2333,
+              "value": -26.84
+            },
+            {
+              "time": 0.3,
+              "value": -28.91
+            },
+            {
+              "time": 0.3667,
+              "value": -26.84
+            },
+            {
+              "time": 0.4333,
+              "value": -28.91
+            },
+            {
+              "time": 0.5,
+              "value": -26.84
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.1333,
+              "x": -12.9,
+              "y": 5.85
+            },
+            {
+              "time": 0.2333,
+              "x": -6.01,
+              "y": -6.94
+            }
+          ]
+        },
+        "gaver": {
+          "rotate": [
+            {
+              "time": 0.1333
+            },
+            {
+              "time": 0.2333,
+              "value": 88.55
+            },
+            {
+              "time": 0.3,
+              "value": 87.22
+            },
+            {
+              "time": 0.3667,
+              "value": 88.55
+            },
+            {
+              "time": 0.4333,
+              "value": 87.22
+            },
+            {
+              "time": 0.5,
+              "value": 88.55
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.1333,
+              "x": -5.79,
+              "y": -0.83
+            },
+            {
+              "time": 0.2333,
+              "x": 66.95,
+              "y": 21.01
+            }
+          ]
+        },
+        "p_der": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1333,
+              "value": 12.37
+            },
+            {
+              "time": 0.2333,
+              "value": -46.44
+            },
+            {
+              "time": 0.3,
+              "value": -48.94
+            },
+            {
+              "time": 0.3667,
+              "value": -46.44
+            },
+            {
+              "time": 0.4333,
+              "value": -48.94
+            },
+            {
+              "time": 0.5,
+              "value": -46.44
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.1333,
+              "x": -17.19,
+              "y": 0.45
+            }
+          ]
+        },
+        "brazo_izq": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1333,
+              "value": 54.31
+            },
+            {
+              "time": 0.2333,
+              "value": -70.4
+            },
+            {
+              "time": 0.3,
+              "value": -72.36
+            },
+            {
+              "time": 0.3667,
+              "value": -70.4
+            },
+            {
+              "time": 0.4333,
+              "value": -72.36
+            },
+            {
+              "time": 0.5,
+              "value": -70.4
+            }
+          ],
+          "translate": [
+            {
+              "time": 0.2333,
+              "x": -22.26,
+              "y": -17.23
+            }
+          ]
+        },
+        "brazo_der": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1333,
+              "value": 55.56
+            },
+            {
+              "time": 0.2333,
+              "value": -110.48
+            }
+          ]
+        },
+        "capa": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1333,
+              "value": 20.72
+            },
+            {
+              "time": 0.2333,
+              "value": -19.66
+            },
+            {
+              "time": 0.3,
+              "value": -21.94
+            },
+            {
+              "time": 0.3667,
+              "value": -19.66
+            },
+            {
+              "time": 0.4333,
+              "value": -21.94
+            },
+            {
+              "time": 0.5,
+              "value": -19.66
+            }
+          ]
+        }
+      }
+    },
+    "idle": {
+      "bones": {
+        "cabeza": {
+          "rotate": [
+            {},
+            {
+              "time": 0.6667,
+              "value": 1.33
+            },
+            {
+              "time": 1.3333,
+              "value": -0.45
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.6667,
+              "x": 0.01,
+              "y": -1.09
+            },
+            {
+              "time": 1.3333
+            }
+          ]
+        },
+        "cuerpo": {
+          "rotate": [
+            {},
+            {
+              "time": 0.6667,
+              "value": -0.56
+            },
+            {
+              "time": 1.3333
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.6667,
+              "x": -0.04,
+              "y": 1.48
+            },
+            {
+              "time": 1.3333
+            }
+          ]
+        },
+        "brazo_izq": {
+          "rotate": [
+            {},
+            {
+              "time": 0.6667,
+              "value": 4.13
+            },
+            {
+              "time": 1.3333
+            }
+          ]
+        },
+        "brazo_der": {
+          "translate": [
+            {},
+            {
+              "time": 0.6667,
+              "x": -3.29,
+              "y": 2.96
+            },
+            {
+              "time": 1.3333
+            }
+          ]
+        },
+        "gaver": {
+          "rotate": [
+            {},
+            {
+              "time": 0.6667,
+              "value": 12.61
+            },
+            {
+              "time": 1.3333
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.6667,
+              "x": 1.26,
+              "y": -0.57
+            },
+            {
+              "time": 1.3333
+            }
+          ]
+        },
+        "capa": {
+          "rotate": [
+            {},
+            {
+              "time": 0.6667,
+              "value": -1.46
+            },
+            {
+              "time": 1.3333
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.6667,
+              "x": -1.3
+            },
+            {
+              "time": 1.3333
+            }
+          ]
+        }
+      }
+    },
+    "run": {
+      "bones": {
+        "p_izq": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1667,
+              "value": -20.68
+            },
+            {
+              "time": 0.3333
+            },
+            {
+              "time": 0.5,
+              "value": -20.68
+            },
+            {
+              "time": 0.6667
+            }
+          ]
+        },
+        "p_der": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1667,
+              "value": 21.8
+            },
+            {
+              "time": 0.3333
+            },
+            {
+              "time": 0.5,
+              "value": 21.8
+            },
+            {
+              "time": 0.6667
+            }
+          ]
+        },
+        "cuerpo": {
+          "translate": [
+            {},
+            {
+              "time": 0.1667,
+              "x": -0.07,
+              "y": 2.72
+            },
+            {
+              "time": 0.3333
+            },
+            {
+              "time": 0.5,
+              "x": -0.07,
+              "y": 2.72
+            },
+            {
+              "time": 0.6667
+            }
+          ]
+        },
+        "brazo_izq": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1667,
+              "value": 19.47
+            },
+            {
+              "time": 0.3333
+            },
+            {
+              "time": 0.5,
+              "value": -17.01
+            },
+            {
+              "time": 0.6667
+            }
+          ]
+        },
+        "brazo_der": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1667,
+              "value": -30.97
+            },
+            {
+              "time": 0.3333
+            },
+            {
+              "time": 0.5,
+              "value": 40.12
+            },
+            {
+              "time": 0.6667
+            }
+          ]
+        },
+        "cabeza": {
+          "rotate": [
+            {
+              "value": 6.55
+            },
+            {
+              "time": 0.3333,
+              "value": 9.24
+            },
+            {
+              "time": 0.6667,
+              "value": 6.55
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.1667,
+              "x": 0.01,
+              "y": -1.04
+            },
+            {
+              "time": 0.3333
+            },
+            {
+              "time": 0.5,
+              "x": 0.01,
+              "y": -1.04
+            },
+            {
+              "time": 0.6667
+            }
+          ]
+        },
+        "capa": {
+          "rotate": [
+            {},
+            {
+              "time": 0.3333,
+              "value": -9.86
+            },
+            {
+              "time": 0.6667
+            }
+          ]
+        },
+        "gaver": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1667,
+              "value": 19.72
+            },
+            {
+              "time": 0.3333
+            },
+            {
+              "time": 0.5,
+              "value": 19.72
+            },
+            {
+              "time": 0.6667
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.1667,
+              "x": -2.27,
+              "y": 0.24
+            },
+            {
+              "time": 0.3333
+            },
+            {
+              "time": 0.5,
+              "x": -2.27,
+              "y": 0.24
+            },
+            {
+              "time": 0.6667
+            }
+          ]
+        }
+      }
+    }
+  }
+}
