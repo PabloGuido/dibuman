@@ -1,14 +1,17 @@
+local camera = require "orthographic.camera"
+local CAMERA_ID = "camera#script"
+local PLAYER_ID = hash("/player/player")
 -- these are the tweaks for the mechanics, feel free to change them for a different feeling
 -- the acceleration to move right/left
 local move_acceleration = 3500
 -- acceleration factor to use when air-borne
 local air_acceleration_factor = 0.8
 -- max speed right/left
-local max_speed = 200
+local max_speed = 250
 -- gravity pulling the player down in pixel units
-local gravity = -1000
+local gravity = -2000 --(1000)
 -- take-off speed when jumping in pixel units
-local jump_takeoff_speed = 550
+local jump_takeoff_speed = 950 --(550)
 -- time within a double tap must occur to be considered a jump (only used for mouse/touch controls)
 local touch_jump_timeout = 0.2
 
@@ -32,6 +35,13 @@ local golpeando = false;
 function init(self)
 	-- this lets us handle input in this script
 	msg.post(".", "acquire_input_focus")
+	print(go.get_id())
+
+	msg.post(CAMERA_ID, "use_projection", { projection = hash("FIXED_AUTO") })
+
+	msg.post(CAMERA_ID, "follow", {target = PLAYER_ID, vertical = false, offset = vmath.vector3(225, 0, 0)})
+	msg.post(CAMERA_ID, "zoom_to", { zoom = 1.2 })
+	go.set_position(vmath.vector3(0, 200, 0), CAMERA_ID )
 
 	-- initial player velocity
 	self.velocity = vmath.vector3(0, 0, 0)

@@ -3,8 +3,28 @@ instances {
   id: "plataforma"
   prototype: "/mapa/plataforma.go"
   position {
-    x: 406.0
-    y: 3.0
+    x: 396.0
+    y: -173.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plataforma1"
+  prototype: "/mapa/plataforma.go"
+  position {
+    x: 1001.0
+    y: -53.0
     z: 0.0
   }
   rotation {
@@ -23,8 +43,8 @@ collection_instances {
   id: "player"
   collection: "/player/player.collection"
   position {
-    x: 402.0
-    y: 304.0
+    x: 182.0
+    y: 148.0
     z: 0.0
   }
   rotation {
