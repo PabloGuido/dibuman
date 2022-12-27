@@ -4,7 +4,7 @@ instances {
   prototype: "/mapa/plataforma.go"
   position {
     x: 406.0
-    y: 90.0
+    y: 3.0
     z: 0.0
   }
   rotation {
@@ -24,7 +24,7 @@ collection_instances {
   collection: "/player/player.collection"
   position {
     x: 402.0
-    y: 399.0
+    y: 304.0
     z: 0.0
   }
   rotation {
