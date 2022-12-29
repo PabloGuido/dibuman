@@ -58,8 +58,7 @@ function init(self)
 	-- the currently playing animation
 	self.anim = nil
 
-
-
+	msg.post("main:/player/bija", "disable")
 end
 
 local function play_animation(self, anim)
@@ -134,6 +133,7 @@ function update(self, dt)
 
 	if not golpeando then
 		update_animations(self)
+		msg.post("main:/player/bija", "disable")
 	end
 
 	-- reset volatile state
@@ -203,17 +203,28 @@ local function test1 (message_id, message, sender)
 		
 	end
 end
+local function activar_bija()
+	msg.post("main:/player/bija", "enable")
+end
 local function golpe(self)
 	print("BIJAZO")
 	golpeando = true
 	local anim_props = { blend_duration = 0.1 }
+	timer.delay(0.2, false, activar_bija)
 	spine.play_anim("main:/player/spine#spinemodel", anim_golpe, go.PLAYBACK_ONCE_FORWARD, anim_props, 
 	function(self)
+		msg.post("main:/player/bija", "disable")
 		golpeando = false
 		local anim_props = { blend_duration = 0.1 }
 		spine.play_anim("main:/player/spine#spinemodel", anim_idle, go.PLAYBACK_LOOP_FORWARD, anim_props)
 		self.anim = nil
 	end)
+end
+
+local function acomodar_bija(dir)
+	go.set_position( vmath.vector3(73 * dir, 49, 0),"main:/player/bija")
+	go.set("main:/player/bija", "euler.z", 13.62 * dir)
+	
 end
 
 function on_input(self, action_id, action)
@@ -224,9 +235,13 @@ function on_input(self, action_id, action)
 		elseif action_id == input_left then
 			self.move_input = -action.value
 			go.set("main:/player/spine", "euler.y", 180)
+			acomodar_bija(-1)
+
 		elseif action_id == input_right then
 			self.move_input = action.value
 			go.set("main:/player/spine", "euler.y", 0)
+			acomodar_bija(1)
+			
 		elseif action_id == input_jump then
 			jump(self)
 			if action.pressed then
