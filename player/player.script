@@ -29,7 +29,8 @@ local anim_idle = hash("idle")
 local anim_jump = hash("jump")
 local anim_fall = hash("fall")
 local anim_golpe = hash("golpe")
-
+local respuesta_t = hash("trigger_response")
+local enemigo_t = hash("enemigo")
 local golpeando = false;
 
 function init(self)
@@ -173,6 +174,11 @@ function on_message(self, message_id, message, sender)
 		-- check that the object is something we consider an obstacle
 		if message.group == group_obstacle then
 			handle_obstacle_contact(self, message.normal, message.distance)
+		end
+
+	elseif message_id == respuesta_t then
+		if message.enter and message.other_group == enemigo_t then
+			print("contacto con el enemgio, perder una vida")
 		end
 	end
 end

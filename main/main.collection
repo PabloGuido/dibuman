@@ -3,8 +3,8 @@ collection_instances {
   id: "player"
   collection: "/player/player.collection"
   position {
-    x: 216.0
-    y: 477.0
+    x: 237.0
+    y: 98.0
     z: 0.0
   }
   rotation {
@@ -152,11 +152,31 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/ENEMIGOS/enemigos.atlas\\\"\\n"
+  "default_animation: \\\"enemigo1\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
   ""
   position {
-    x: 529.0
-    y: 194.0
-    z: 0.0
+    x: 540.0
+    y: 147.0
+    z: 0.5
   }
   rotation {
     x: 0.0
