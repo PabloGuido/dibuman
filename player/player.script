@@ -33,13 +33,15 @@ local anim_golpe = hash("golpe")
 local golpeando = false;
 
 function init(self)
+	msg.post("@render:", "clear_color", { color = vmath.vector4(0, 0.25, 0.75, 0) } )
+	
 	-- this lets us handle input in this script
 	msg.post(".", "acquire_input_focus")
 	print(go.get_id())
 
 	msg.post(CAMERA_ID, "use_projection", { projection = hash("FIXED_AUTO") })
 
-	msg.post(CAMERA_ID, "follow", {target = PLAYER_ID, vertical = false, offset = vmath.vector3(225, 0, 0)})
+	msg.post(CAMERA_ID, "follow", {target = PLAYER_ID, vertical = false, offset = vmath.vector3(0, 0, 0)})
 	msg.post(CAMERA_ID, "zoom_to", { zoom = 1.2 })
 	go.set_position(vmath.vector3(0, 200, 0), CAMERA_ID )
 
