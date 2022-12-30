@@ -1,3 +1,4 @@
+local datos = require("main.datos")
 local camera = require "orthographic.camera"
 local CAMERA_ID = "camera#script"
 local PLAYER_ID = hash("/player/player")
@@ -58,7 +59,8 @@ function init(self)
 	self.move_input = 0	
 	-- the currently playing animation
 	self.anim = nil
-
+	--
+	datos.player_pos = go.get_position()
 	msg.post("main:/player/bija", "disable")
 end
 
@@ -142,6 +144,7 @@ function update(self, dt)
 	self.move_input = 0
 	self.ground_contact = false
 
+	datos.player_pos = go.get_position()
 end
 
 local function handle_obstacle_contact(self, normal, distance)

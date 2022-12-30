@@ -1,0 +1,2 @@
+prototype: "/ENEMIGOS/enemigo.go"
+load_dynamically: false
