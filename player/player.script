@@ -43,7 +43,7 @@ function init(self)
 	msg.post(CAMERA_ID, "use_projection", { projection = hash("FIXED_AUTO") })
 
 	msg.post(CAMERA_ID, "follow", {target = PLAYER_ID, vertical = false, offset = vmath.vector3(0, 0, 0)})
-	msg.post(CAMERA_ID, "zoom_to", { zoom = 1.2 })
+	msg.post(CAMERA_ID, "zoom_to", { zoom = 1.15 })
 	go.set_position(vmath.vector3(0, 200, 0), CAMERA_ID )
 
 	-- initial player velocity
@@ -213,6 +213,7 @@ local function activar_bija()
 	msg.post("main:/player/bija", "enable")
 end
 local function golpe(self)
+	spine.cancel("main:/player/spine#spinemodel")
 	print("BIJAZO")
 	golpeando = true
 	local anim_props = { blend_duration = 0.1 }

@@ -1,5 +1,6 @@
 local respuesta_t = hash("trigger_response")
 local bija_t = hash("bija")
+local velocidad = 150
 function init(self)
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
@@ -13,9 +14,9 @@ function final(self)
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	local p = go.get_position()
+	p.x = p.x - velocidad * dt
+	go.set_position(p)
 end
 
 function fixed_update(self, dt)
