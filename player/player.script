@@ -100,6 +100,9 @@ local function update_animations(self)
 end
 
 function update(self, dt)
+	if dt >= 0.1 then
+		return
+	end
 	-- determine the target speed based on input
 	local target_speed = self.move_input * max_speed
 	-- calculate the difference between our current speed and the target speed
