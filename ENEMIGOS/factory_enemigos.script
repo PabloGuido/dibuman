@@ -2,8 +2,10 @@ local datos = require("main.datos")
 
 --
 local function crear_enemigo()
---local pos_inicial = vmath.vector3(datos.player_pos.x+720 ,140,1) 
-	factory.create("#enemigos_f")
+	--local pos_inicial = vmath.vector3(datos.player_pos.x+720 ,140,1) 
+	if not datos.game_over then
+		factory.create("#enemigos_f")
+	end
 end
 function init(self)	
 
