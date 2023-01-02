@@ -5,9 +5,13 @@ local desactivar_nodos_iniciales
 --nodos
 local bija_titulo
 local empezar
+local empezar_flag
 local v1
 local v2
 local v3
+local restart
+local restart_flag
+--
 local tabla_vidas
 local vidas_visibles = false;
 --
@@ -26,14 +30,33 @@ end
 local function perder_vida(que_vida)
 	gui.animate(tabla_vidas[que_vida], "color.w", 0, gui.EASING_LINEAR, 0.15)
 end
+
+local function mostrar_gameover()
+	gui.set_enabled(restart, true)
+	gui.set_enabled(restart_flag, true)
+	gui.animate(restart, "color.w", 1, gui.EASING_LINEAR, 1)
+end
+
+local function restart_game()
+	gui.set_enabled(restart_flag, false)
+	gui.animate(restart, "color.w", 0, gui.EASING_LINEAR, 0.5)
+	msg.post("main:/player/player", "restart_game")
+end
+
 function init(self)
 	bija_titulo = gui.get_node("bija_titulo")
 	empezar = gui.get_node("empezar")
+	empezar_flag = gui.get_node("empezar_flag")
 	v1 = gui.get_node("v1")
 	v2 = gui.get_node("v2")
 	v3 = gui.get_node("v3")
 	tabla_vidas = {v1,v2,v3}
 	mostrar_vidas()
+	restart = gui.get_node("restart")
+	restart_flag = gui.get_node("restart_flag")
+	gui.set_alpha(restart, 0);
+	gui.set_enabled(restart, false)
+	gui.set_enabled(restart_flag, false)
 	--
 	gui.animate(bija_titulo, "scale", 1.05, gui.EASING_LINEAR, 2, 0, nil, gui.PLAYBACK_LOOP_PINGPONG)
 	
@@ -63,25 +86,30 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("perder_vida") then
 		local que_vida = message.vidas+1
 		perder_vida(que_vida)
+	elseif message_id == hash("game_over") then
+		timer.delay(0.5, false, mostrar_gameover)
+		--mostrar_gameover()
 	end
 end
 
 function on_input(self, action_id, action)
 	if action_id == hash("touch") and action.pressed then
-		if gui.pick_node(empezar, action.x, action.y) and not se_empezo_el_juego then
-			se_empezo_el_juego = true;
+		if gui.pick_node(empezar, action.x, action.y) and gui.is_enabled(empezar_flag) then
 			datos.empezar_juego();
 			desactivar_nodos_iniciales()
+		elseif gui.pick_node(restart, action.x, action.y) and gui.is_enabled(restart_flag) then
+			restart_game()
+			print("restart game")
 		end
+	
 
 	end
 end
 
 desactivar_nodos_iniciales = function()
+	gui.set_enabled(empezar_flag, false)
 	gui.animate(empezar, "color.w", 0, gui.EASING_LINEAR, 1)
 	gui.animate(bija_titulo, "color.w", 0, gui.EASING_LINEAR, 1)
-
-
 end
 
 
