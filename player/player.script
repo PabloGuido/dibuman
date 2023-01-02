@@ -33,10 +33,10 @@ local anim_golpe = hash("golpe")
 local respuesta_t = hash("trigger_response")
 local enemigo_t = hash("enemigo")
 local golpeando = false;
-
+local puede_ser_tocado = true;
 -- funciones
 local empezar_juego
-
+local vidas = 2;
 function init(self)
 	msg.post("@render:", "clear_color", { color = vmath.vector4(0, 0.25, 0.75, 0) } )
 	
@@ -177,6 +177,35 @@ local function handle_obstacle_contact(self, normal, distance)
 	end
 end
 
+local function restablecer_perder_vida()
+	go.cancel_animations("spine#spinemodel")
+	go.cancel_animations("spine")
+	go.set("spine#spinemodel", "tint.w", 1)
+	go.set_scale(1, "spine")
+	puede_ser_tocado = true;
+end
+
+local function game_over()
+	print("game over")
+	
+end
+
+local function perder_vida()
+	puede_ser_tocado = false;
+	if vidas >= 1 then
+		print("contacto con el enemgio, perder una vida")
+		vidas = vidas - 1
+		go.animate("spine#spinemodel", "tint.w", go.PLAYBACK_LOOP_PINGPONG, 0.25, go.EASING_LINEAR, 0.5)
+		go.animate("spine", "scale", go.PLAYBACK_LOOP_PINGPONG, 1.015, go.EASING_LINEAR, 0.25)
+		go.animate("/player/placebo", "scale", go.PLAYBACK_ONCE_PINGPONG, 1.015, go.EASING_LINEAR, 2.5, 0,
+		function()
+			restablecer_perder_vida()
+		end)
+	else 
+		game_over()
+	end
+end
+
 function on_message(self, message_id, message, sender)
 	-- check if we received a contact point message
 	if message_id == msg_contact_point_response then
@@ -187,7 +216,9 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == respuesta_t then
 		if message.enter and message.other_group == enemigo_t then
-			print("contacto con el enemgio, perder una vida")
+			if puede_ser_tocado then
+				perder_vida()
+			end
 		end
 	elseif message_id == hash("empezar_juego") then
 		empezar_juego();

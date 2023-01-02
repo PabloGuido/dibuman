@@ -44,7 +44,7 @@ collection_instances {
   collection: "/player/player.collection"
   position {
     x: 237.0
-    y: 334.0
+    y: 144.0
     z: 0.0
   }
   rotation {

@@ -6,6 +6,8 @@ local desactivar_nodos_iniciales
 local bija_titulo
 local empezar
 
+--
+
 function init(self)
 	bija_titulo = gui.get_node("bija_titulo")
 	empezar = gui.get_node("empezar")
@@ -14,7 +16,9 @@ function init(self)
 	gui.animate(bija_titulo, "scale", 1.05, gui.EASING_LINEAR, 2, 0, nil, gui.PLAYBACK_LOOP_PINGPONG)
 	
 	--
-	msg.post("", "acquire_input_focus")
+	gui.set_alpha(empezar, 0)
+	gui.animate(empezar, "color.w", 1, gui.EASING_LINEAR, 0.5, 0, function() msg.post("", "acquire_input_focus") end)
+	
 end
 
 function final(self)

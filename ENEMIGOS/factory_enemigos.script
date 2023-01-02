@@ -6,9 +6,6 @@ local function crear_enemigo()
 	factory.create("#enemigos_f")
 end
 function init(self)	
-	if not datos.game_over then
-		timer.delay(1, true, crear_enemigo)
-	end
 
 end
 
