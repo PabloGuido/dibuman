@@ -2,7 +2,7 @@ local datos = require("main.datos")
 
 local respuesta_t = hash("trigger_response")
 local bija_t = hash("bija")
-local velocidad = 200
+local velocidad = 280 -- 300 ?
 local pos_inicial = {}
 local dir_random = {1, -1}
 

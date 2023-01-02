@@ -285,6 +285,7 @@ empezar_juego = function()
 		go.animate(CAMERA_ID, "zoom", go.PLAYBACK_ONCE_FORWARD, 1.15, go.EASING_INBACK, 2, 0, 
 		function()
 			msg.post("", "acquire_input_focus")
+			msg.post("main:/factory#factory_enemigos", "empezar_juego")
 		end)
 	
 		go.animate(CAMERA_ID, "follow_offset", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(0, 0, 0), go.EASING_INBACK, 1)
