@@ -18,8 +18,8 @@ function init(self)
 	go.set_position(pos_inicial[numero_random])
 	self.dir = dir_random[numero_random]
 	if numero_random == 2 then
-		--go.set("#spinemodel", "euler.y", 180)
-		--sprite.set_hflip("#sprite", true)
+		go.set("spine", "euler.y", 180)
+		go.set("spine", "position.x", 17.5)
 	end
 end
 
@@ -60,8 +60,8 @@ end
 eliminar_enemigo = function(self)
 	msg.post("#collisionobject", "disable")
 	self.dir = 0;
-	--go.animate("#spinemodel", "scale", go.PLAYBACK_LOOP_PINGPONG, 1.05, go.EASING_LINEAR, 0.1)
-	go.animate("#spinemodel", "tint.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_LINEAR, 0.15, 0, 
+	go.animate("spine", "scale", go.PLAYBACK_LOOP_PINGPONG, 1.05, go.EASING_LINEAR, 0.1)
+	go.animate("spine#spinemodel", "tint.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_LINEAR, 0.15, 0, 
 	function()
 		go.delete()
 	end)

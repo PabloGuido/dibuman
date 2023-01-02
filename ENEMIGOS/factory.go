@@ -1,6 +1,6 @@
 components {
-  id: "enemigos_f"
-  component: "/ENEMIGOS/enemigos_f.factory"
+  id: "factory_enemigos"
+  component: "/ENEMIGOS/factory_enemigos.script"
   position {
     x: 0.0
     y: 0.0
@@ -14,8 +14,8 @@ components {
   }
 }
 components {
-  id: "factory_enemigos"
-  component: "/ENEMIGOS/factory_enemigos.script"
+  id: "enemigos_cf"
+  component: "/ENEMIGOS/enemigos_cf.collectionfactory"
   position {
     x: 0.0
     y: 0.0
