@@ -13,8 +13,8 @@ local eliminar_enemigo
 function init(self)
 	
 	local numero_random = math.random(1, 2)
-	pos_inicial[1] = vmath.vector3(datos.player_pos.x+720 ,140,1)
-	pos_inicial[2] = vmath.vector3(datos.player_pos.x-720 ,140,1)
+	pos_inicial[1] = vmath.vector3(datos.player_pos.x+720 ,140,0.5)
+	pos_inicial[2] = vmath.vector3(datos.player_pos.x-720 ,140,0.5)
 	go.set_position(pos_inicial[numero_random])
 	self.dir = dir_random[numero_random]
 	if numero_random == 2 then
