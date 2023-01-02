@@ -1,0 +1,59 @@
+local datos = require("main.datos")
+-- vars
+local se_empezo_el_juego = false
+local desactivar_nodos_iniciales
+--nodos
+local bija_titulo
+local empezar
+
+function init(self)
+	bija_titulo = gui.get_node("bija_titulo")
+	empezar = gui.get_node("empezar")
+
+	--
+	gui.animate(bija_titulo, "scale", 1.05, gui.EASING_LINEAR, 2, 0, nil, gui.PLAYBACK_LOOP_PINGPONG)
+	
+	--
+	msg.post("", "acquire_input_focus")
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("touch") and action.pressed then
+		if gui.pick_node(empezar, action.x, action.y) and not se_empezo_el_juego then
+			se_empezo_el_juego = true;
+			datos.empezar_juego();
+			desactivar_nodos_iniciales()
+		end
+
+	end
+end
+
+desactivar_nodos_iniciales = function()
+	gui.animate(empezar, "color.w", 0, gui.EASING_LINEAR, 1)
+	gui.animate(bija_titulo, "color.w", 0, gui.EASING_LINEAR, 1)
+
+
+end
+
+
+
+
+
