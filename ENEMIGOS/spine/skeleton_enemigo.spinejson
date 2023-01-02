@@ -1,0 +1,270 @@
+{
+  "skeleton": {
+    "hash": "ulrS0syjjuspAOIPkB5oEH9kfss",
+    "spine": "4.0.64",
+    "x": -63.3,
+    "y": -15.47,
+    "width": 135.03,
+    "height": 304.99,
+    "images": "",
+    "audio": ""
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "cabeza",
+      "parent": "root",
+      "length": 72.97,
+      "rotation": 89.25,
+      "x": 4.6,
+      "y": 177.31
+    },
+    {
+      "name": "cuerpo",
+      "parent": "root",
+      "length": 84.48,
+      "rotation": 89.67,
+      "x": 2.2,
+      "y": 72.19
+    },
+    {
+      "name": "brazoDER",
+      "parent": "root",
+      "length": 45.14,
+      "rotation": -54.96,
+      "x": 34.36,
+      "y": 141.79
+    },
+    {
+      "name": "brazoIZQ",
+      "parent": "root",
+      "length": 35,
+      "rotation": -137.78,
+      "x": -24.2,
+      "y": 114.91
+    },
+    {
+      "name": "pIZQ",
+      "parent": "root",
+      "length": 57.14,
+      "rotation": -111.18,
+      "x": -5.96,
+      "y": 62.11
+    },
+    {
+      "name": "pDER",
+      "parent": "root",
+      "length": 51.46,
+      "rotation": -75.96,
+      "x": 17.08,
+      "y": 61.15
+    }
+  ],
+  "slots": [
+    {
+      "name": "brazoizq_e",
+      "bone": "brazoIZQ",
+      "attachment": "brazoizq_e"
+    },
+    {
+      "name": "pder_e2",
+      "bone": "pIZQ",
+      "attachment": "pder_e"
+    },
+    {
+      "name": "pder_e",
+      "bone": "pDER",
+      "attachment": "pder_e"
+    },
+    {
+      "name": "cuerpo_e",
+      "bone": "cuerpo",
+      "attachment": "cuerpo_e"
+    },
+    {
+      "name": "brazoder_e",
+      "bone": "brazoDER",
+      "attachment": "brazoder_e"
+    },
+    {
+      "name": "cabeza_e",
+      "bone": "cabeza",
+      "attachment": "cabeza_e"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "brazoizq_e": {
+          "brazoizq_e": {
+            "x": 23.16,
+            "y": -0.67,
+            "rotation": 137.78,
+            "width": 43,
+            "height": 38
+          }
+        },
+        "cuerpo_e": {
+          "cuerpo_e": {
+            "x": 53.58,
+            "y": -2.85,
+            "rotation": -89.67,
+            "width": 102,
+            "height": 128
+          }
+        },
+        "pder_e": {
+          "pder_e": {
+            "x": 22.51,
+            "y": -1.46,
+            "rotation": 75.96,
+            "width": 47,
+            "height": 91
+          }
+        },
+        "pder_e2": {
+          "pder_e": {
+            "x": 27.82,
+            "y": 1.29,
+            "rotation": 86.04,
+            "width": 47,
+            "height": 91
+          }
+        },
+        "cabeza_e": {
+          "cabeza_e": {
+            "x": 51.8,
+            "y": -6.07,
+            "rotation": -89.25,
+            "width": 98,
+            "height": 121
+          }
+        },
+        "brazoder_e": {
+          "brazoder_e": {
+            "x": 23.97,
+            "y": -31.02,
+            "rotation": 54.96,
+            "width": 98,
+            "height": 102
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "run": {
+      "bones": {
+        "pIZQ": {
+          "rotate": [
+            {},
+            {
+              "time": 0.2667,
+              "value": -12.78
+            },
+            {
+              "time": 0.5333
+            }
+          ]
+        },
+        "pDER": {
+          "rotate": [
+            {},
+            {
+              "time": 0.2667,
+              "value": 15.23
+            },
+            {
+              "time": 0.5333
+            }
+          ]
+        },
+        "cuerpo": {
+          "rotate": [
+            {},
+            {
+              "time": 0.2667,
+              "value": -1.32
+            },
+            {
+              "time": 0.5333
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.2667,
+              "y": -3.94
+            },
+            {
+              "time": 0.5333
+            }
+          ]
+        },
+        "cabeza": {
+          "rotate": [
+            {},
+            {
+              "time": 0.2667,
+              "value": 6.68
+            },
+            {
+              "time": 0.5333
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.2667,
+              "y": -2.42
+            },
+            {
+              "time": 0.5333
+            }
+          ]
+        },
+        "brazoDER": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1333,
+              "value": 8.27
+            },
+            {
+              "time": 0.2667
+            },
+            {
+              "time": 0.4,
+              "value": -7.54
+            },
+            {
+              "time": 0.5333
+            }
+          ]
+        },
+        "brazoIZQ": {
+          "rotate": [
+            {},
+            {
+              "time": 0.1333,
+              "value": -10.1
+            },
+            {
+              "time": 0.2667
+            },
+            {
+              "time": 0.4,
+              "value": 10.65
+            },
+            {
+              "time": 0.5333
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -63,16 +63,18 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "sprite"
-  type: "sprite"
-  data: "tile_set: \"/ENEMIGOS/enemigos.atlas\"\n"
-  "default_animation: \"enemigo1\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
+  id: "spinemodel"
+  type: "spinemodel"
+  data: "spine_scene: \"/ENEMIGOS/spine/enemigo.spinescene\"\n"
+  "default_animation: \"run\"\n"
+  "skin: \"\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
+  "material: \"/defold-spine/assets/spine.material\"\n"
+  "create_go_bones: false\n"
   ""
   position {
-    x: 0.0
-    y: 0.0
+    x: -5.0
+    y: -140.0
     z: 0.0
   }
   rotation {
