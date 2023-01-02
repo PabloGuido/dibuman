@@ -3,6 +3,10 @@ fonts {
   name: "lowBudgetTitulo"
   font: "/GUI/fonts/lowBudgetTitulo.font"
 }
+textures {
+  name: "gui"
+  texture: "/GUI/img/gui.atlas"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -332,20 +336,20 @@ nodes {
     w: 1.0
   }
   size {
-    x: 75.0
-    y: 75.0
+    x: 94.0
+    y: 85.0
     z: 0.0
     w: 1.0
   }
   color {
     x: 1.0
-    y: 0.0
-    z: 0.0
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/corazon"
   id: "v1"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -365,7 +369,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -390,20 +394,20 @@ nodes {
     w: 1.0
   }
   size {
-    x: 75.0
-    y: 75.0
+    x: 94.0
+    y: 85.0
     z: 0.0
     w: 1.0
   }
   color {
     x: 1.0
-    y: 0.0
-    z: 0.0
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/corazon"
   id: "v2"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -423,7 +427,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -448,20 +452,20 @@ nodes {
     w: 1.0
   }
   size {
-    x: 75.0
-    y: 75.0
+    x: 94.0
+    y: 85.0
     z: 0.0
     w: 1.0
   }
   color {
     x: 1.0
-    y: 0.0
-    z: 0.0
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/corazon"
   id: "v3"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -481,7 +485,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
