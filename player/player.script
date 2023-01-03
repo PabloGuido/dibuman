@@ -275,6 +275,7 @@ local function golpe(self)
 	spine.cancel("main:/player/spine#spinemodel")
 	print("BIJAZO")
 	golpeando = true
+	sound.play("#sound")
 	local anim_props = { blend_duration = 0.1 }
 	timer.delay(0.2, false, activar_bija)
 	spine.play_anim("main:/player/spine#spinemodel", anim_golpe, go.PLAYBACK_ONCE_FORWARD, anim_props, 
@@ -323,6 +324,7 @@ end
 
 empezar_juego = function()
 	spine.cancel("main:/player/spine#spinemodel")
+	sound.play("#sound")
 	local anim_props = { blend_duration = 0.1 }
 	spine.play_anim("main:/player/spine#spinemodel", anim_golpe, go.PLAYBACK_ONCE_FORWARD, anim_props, 
 	function(self)
