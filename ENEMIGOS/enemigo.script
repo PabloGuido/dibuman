@@ -7,6 +7,8 @@ local velocidad = 280 -- 300 ?
 local pos_inicial = {}
 local dir_random = {1, -1}
 local sonido_reproducido
+go.property("naranja", false)
+go.property("velocidad", 0)
 -- var funciones
 local eliminar_enemigo
 
@@ -22,6 +24,7 @@ function init(self)
 		go.set("spine", "euler.y", 180)
 		go.set("spine", "position.x", 17.5)
 	end
+	--print(self.naranja)
 end
 
 function final(self)
@@ -33,11 +36,17 @@ end
 
 function update(self, dt)
 	local p = go.get_position()
-	p.x = p.x - velocidad * self.dir * dt
+	p.x = p.x - self.velocidad * self.dir * dt
 	go.set_position(p)
 
 	if datos.game_over then
 		eliminar_enemigo(self)
+		return
+	elseif self.naranja then
+		if p.x > datos.player_pos.x + 900 or p.x < datos.player_pos.x - 900 then
+			--print("eliminar enemgio")
+			go.delete(".", true)
+		end
 	end
 end
 

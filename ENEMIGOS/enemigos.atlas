@@ -1,29 +1,49 @@
 images {
-  image: "/ENEMIGOS/enemigo1.png"
+  image: "/ENEMIGOS/FRANCES/spine/brazoder_e.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/ENEMIGOS/spine/brazoder_e.png"
+  image: "/ENEMIGOS/FRANCES/spine/brazoizq_e.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/ENEMIGOS/spine/brazoizq_e.png"
+  image: "/ENEMIGOS/FRANCES/spine/cabeza_e.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/ENEMIGOS/spine/cabeza_e.png"
+  image: "/ENEMIGOS/FRANCES/spine/cuerpo_e.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/ENEMIGOS/spine/cuerpo_e.png"
+  image: "/ENEMIGOS/FRANCES/spine/pder_e.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/ENEMIGOS/spine/pder_e.png"
+  image: "/ENEMIGOS/FRANCES/spine/pizq_e.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/ENEMIGOS/spine/pizq_e.png"
+  image: "/ENEMIGOS/NARANJA/spine/naranja_cuerpo.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/ENEMIGOS/NARANJA/spine/naranja_pie_der.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/ENEMIGOS/NARANJA/spine/naranja_pie_izq.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/ENEMIGOS/NARANJA/spine/naranja_dientes_abajo.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/ENEMIGOS/NARANJA/spine/naranja_dientes_arriba.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/ENEMIGOS/NARANJA/spine/naranja_dientes_fondo.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 margin: 0

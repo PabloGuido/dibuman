@@ -4,8 +4,9 @@ local datos = require("main.datos")
 local function crear_enemigo()
 	--local pos_inicial = vmath.vector3(datos.player_pos.x+720 ,140,1) 
 	if not datos.game_over then
-		--factory.create("#enemigos_f")
-		collectionfactory.create("#enemigos_cf")
+		--"#enemigos_cf" 280 vel
+		-- naranjas 400 vel
+		collectionfactory.create("#NARANJA", vmath.vector3(), vmath.quat(), {[hash("/collision")] = {velocidad = 400, naranja = true}})
 	end
 end
 function init(self)	

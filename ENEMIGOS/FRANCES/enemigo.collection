@@ -1,7 +1,7 @@
 name: "default"
 instances {
   id: "enemigo"
-  prototype: "/ENEMIGOS/enemigo.go"
+  prototype: "/ENEMIGOS/FRANCES/enemigo.go"
   children: "collision"
   position {
     x: 0.0
@@ -159,7 +159,7 @@ embedded_instances {
   data: "embedded_components {\n"
   "  id: \"spinemodel\"\n"
   "  type: \"spinemodel\"\n"
-  "  data: \"spine_scene: \\\"/ENEMIGOS/spine/enemigo.spinescene\\\"\\n"
+  "  data: \"spine_scene: \\\"/ENEMIGOS/FRANCES/spine/enemigo.spinescene\\\"\\n"
   "default_animation: \\\"run\\\"\\n"
   "skin: \\\"\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
