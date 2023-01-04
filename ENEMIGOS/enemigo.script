@@ -6,15 +6,12 @@ local player_t = hash("player")
 local velocidad = 280 -- 300 ?
 local pos_inicial = {}
 local dir_random = {1, -1}
-local sonido_reproducido
 go.property("naranja", false)
 go.property("velocidad", 0)
 -- var funciones
 local eliminar_enemigo
 
 function init(self)
-	self.sonido_reproducido = false;
-	sonido_reproducido = self.sonido_reproducido;
 	local numero_random = math.random(1, 2)
 	pos_inicial[1] = vmath.vector3(datos.player_pos.x+720 ,140,0.5)
 	pos_inicial[2] = vmath.vector3(datos.player_pos.x-720 ,140,0.5)
@@ -23,6 +20,10 @@ function init(self)
 	if numero_random == 2 then
 		go.set("spine", "euler.y", 180)
 		go.set("spine", "position.x", 17.5)
+	end
+	if self.naranja then
+		local pos = go.get_position()
+		go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, pos.y -15, go.EASING_INBOUNCE, 0.5)
 	end
 	--print(self.naranja)
 end
@@ -58,20 +59,23 @@ function fixed_update(self, dt)
 end
 
 local function reproducir_sonido(self, que_sonido, cuanto_gain)
-	if not self.sonido_reproducido then
-		self.sonido_reproducido = true
-		sound.play(que_sonido, {gain = cuanto_gain})
-	end
+	sound.play(que_sonido, {gain = cuanto_gain})
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == respuesta_t then
-		if message.other_group == bija_t then
-			eliminar_enemigo(self)	
-			reproducir_sonido(self, "#sound_copa", 0.5)
-		elseif message.other_group == player_t then
-			eliminar_enemigo(self)
-			reproducir_sonido(self, "#sound_cuerpo", 0.8)
+		if message.other_group == bija_t and message.enter then
+			if self.naranja == true then
+				eliminar_enemigo(self)
+				reproducir_sonido(self, "#muerde_bija", 0.5)
+				msg.post("main:/player/player", hash("naranja"), {enter = true, other_group = hash("enemigo")})
+			else
+				eliminar_enemigo(self)
+				reproducir_sonido(self, "#sound_copa", 0.5)
+			end
+		elseif message.other_group == player_t and message.enter then
+				eliminar_enemigo(self)
+				reproducir_sonido(self, "#sound_cuerpo", 0.8)
 		end
 			
 	end

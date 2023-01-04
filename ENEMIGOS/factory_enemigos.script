@@ -1,4 +1,6 @@
+math.randomseed(socket.gettime()*10000)
 local datos = require("main.datos")
+local cada_cuanto_naranja
 
 --
 local function crear_enemigo()
@@ -6,7 +8,8 @@ local function crear_enemigo()
 	if not datos.game_over then
 		--"#enemigos_cf" 280 vel
 		-- naranjas 400 vel
-		collectionfactory.create("#NARANJA", vmath.vector3(), vmath.quat(), {[hash("/collision")] = {velocidad = 400, naranja = true}})
+		local t = collectionfactory.create("#NARANJA", vmath.vector3(), vmath.quat(), {[hash("/collision")] = {velocidad = 400, naranja = true}})
+
 	end
 end
 function init(self)	

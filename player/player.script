@@ -228,7 +228,7 @@ function on_message(self, message_id, message, sender)
 			handle_obstacle_contact(self, message.normal, message.distance)
 		end
 
-	elseif message_id == respuesta_t then
+	elseif message_id == respuesta_t or message_id == hash("naranja") then
 		if message.enter and message.other_group == enemigo_t then
 			if puede_ser_tocado then
 				perder_vida()
