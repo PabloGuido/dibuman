@@ -59,7 +59,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == respuesta_t then
 		if message.other_group == bija_t then
 			eliminar_enemigo(self)	
-			reproducir_sonido(self, "#sound_copa", 0.6)
+			reproducir_sonido(self, "#sound_copa", 0.5)
 		elseif message.other_group == player_t then
 			eliminar_enemigo(self)
 			reproducir_sonido(self, "#sound_cuerpo", 0.8)
