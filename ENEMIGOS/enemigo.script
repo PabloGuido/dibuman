@@ -8,11 +8,13 @@ local pos_inicial = {}
 local dir_random = {1, -1}
 go.property("naranja", false)
 go.property("velocidad", 0)
+go.property("numero_random", 1)
 -- var funciones
 local eliminar_enemigo
 
 function init(self)
-	local numero_random = math.random(1, 2)
+	local numero_random = self.numero_random;
+	--local numero_random = math.random(1, 2)
 	pos_inicial[1] = vmath.vector3(datos.player_pos.x+720 ,140,0.5)
 	pos_inicial[2] = vmath.vector3(datos.player_pos.x-720 ,140,0.5)
 	go.set_position(pos_inicial[numero_random])
