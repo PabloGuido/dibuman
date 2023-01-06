@@ -14,8 +14,8 @@ input_method = HiddenInputField
 
 [project]
 title = Dibuman
-dependencies#0 = https://github.com/defold/extension-spine/archive/main.zip
-dependencies#1 = https://github.com/britzl/defold-orthographic/archive/master.zip
+dependencies#0 = https://github.com/britzl/defold-orthographic/archive/master.zip
+dependencies#1 = https://github.com/defold/extension-spine/archive/refs/tags/2.6.0.zip
 
 [sound]
 max_component_count = 256
