@@ -34,9 +34,11 @@ local respuesta_t = hash("trigger_response")
 local enemigo_t = hash("enemigo")
 local golpeando = false;
 local puede_ser_tocado = true;
+local mirar_a_la_derecha = false;
 -- funciones
 local empezar_juego;
 local restart_game;
+local cambiar_direccio_vista;
 -- vars
 local vidas_iniciales = 2;
 local vidas = 2;
@@ -219,16 +221,23 @@ local function perder_vida()
 end
 
 local function mover_camara_jefe()
-	msg.post(CAMERA_ID, "unfollow")
-	msg.post("", "release_input_focus")
+	-- sacar camara y input
+	msg.post(CAMERA_ID, "unfollow");
+	msg.post("", "release_input_focus");
+	-- No se puede tocar y eliminar enemigos
+	puede_ser_tocado = false;
+	datos.eliminar_enemigos = true;
+	-- acomodar direccion donde mira player
+	mirar_a_la_derecha = true;
+	cambiar_direccio_vista(0, 1)
+	-- 
+	-- mover camara
 	local pos = go.get_position()
 	go.animate("camera", "position.x", go.PLAYBACK_ONCE_FORWARD, pos.x + 360, go.EASING_LINEAR, 2)
+	-- mover pared izquierda
 	msg.post("/paredes", "disable")
 	go.set_position(vmath.vector3(pos.x - 250, 248, 0), "/paredes")
 	msg.post("/paredes", "enable")
-	print(pos)
-	--msg.post(CAMERA_ID, "follow", {target = PLAYER_ID, vertical = false, offset = vmath.vector3(90, 0, 0)})
-	--go.set_position(vmath.vector3(0, 180, 0), CAMERA_ID )
 
 end
 
@@ -309,6 +318,13 @@ local function acomodar_bija(dir)
 	
 end
 
+cambiar_direccio_vista = function(euler, dir)
+	if not mirar_a_la_derecha then
+		go.set("main:/player/spine", "euler.y", euler)
+		acomodar_bija(dir)
+	end
+end
+
 function on_input(self, action_id, action)
 	if not golpeando then
 		if action_id == input_golpe and action.pressed then
@@ -316,13 +332,11 @@ function on_input(self, action_id, action)
 			return
 		elseif action_id == input_left then
 			self.move_input = -action.value
-			go.set("main:/player/spine", "euler.y", 180)
-			acomodar_bija(-1)
+			cambiar_direccio_vista(180, -1)
 
 		elseif action_id == input_right then
 			self.move_input = action.value
-			go.set("main:/player/spine", "euler.y", 0)
-			acomodar_bija(1)
+			cambiar_direccio_vista(0, 1)
 			
 		elseif action_id == input_jump then
 			jump(self)
