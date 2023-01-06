@@ -1,0 +1,250 @@
+{
+  "skeleton": {
+    "hash": "HRMY2YH2Yag0ucbKuJbo/RsUUnE",
+    "spine": "4.0.64",
+    "x": -136,
+    "y": -72.16,
+    "width": 350,
+    "height": 561.45,
+    "images": "",
+    "audio": ""
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "CUERPO",
+      "parent": "root",
+      "length": 179.26,
+      "rotation": 90,
+      "x": 8.88,
+      "y": 51.07
+    },
+    {
+      "name": "BRAZO_DER",
+      "parent": "root",
+      "length": 70.91,
+      "rotation": -98.43,
+      "x": 135.31,
+      "y": 167.12
+    },
+    {
+      "name": "pDER",
+      "parent": "root",
+      "length": 51.21,
+      "rotation": -71.26,
+      "x": 133.58,
+      "y": 40.68
+    },
+    {
+      "name": "pIZQ",
+      "parent": "root",
+      "length": 43,
+      "rotation": -124.33,
+      "x": -65.6,
+      "y": 61.47
+    },
+    {
+      "name": "bija1",
+      "parent": "root",
+      "length": 12.35,
+      "rotation": -90,
+      "x": 20.69,
+      "y": 35.37
+    },
+    {
+      "name": "bija2",
+      "parent": "root",
+      "length": 12.68,
+      "rotation": -91.47,
+      "x": 30.12,
+      "y": 41
+    }
+  ],
+  "slots": [
+    {
+      "name": "bija_2",
+      "bone": "bija2",
+      "attachment": "bija_2"
+    },
+    {
+      "name": "bija_1",
+      "bone": "bija1",
+      "attachment": "bija_1"
+    },
+    {
+      "name": "napo_pie_DER",
+      "bone": "pDER",
+      "attachment": "napo_pie_DER"
+    },
+    {
+      "name": "napo_pie_IZQ",
+      "bone": "pIZQ",
+      "attachment": "napo_pie_IZQ"
+    },
+    {
+      "name": "napo_cuerpo",
+      "bone": "CUERPO",
+      "attachment": "napo_cuerpo"
+    },
+    {
+      "name": "napo_bDER",
+      "bone": "BRAZO_DER",
+      "attachment": "napo_bDER"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "napo_pie_IZQ": {
+          "napo_pie_IZQ": {
+            "x": 43.71,
+            "y": 12.94,
+            "rotation": 124.33,
+            "width": 77,
+            "height": 122
+          }
+        },
+        "napo_cuerpo": {
+          "napo_cuerpo": {
+            "x": 202.21,
+            "y": -30.12,
+            "rotation": -90,
+            "width": 350,
+            "height": 472
+          }
+        },
+        "napo_pie_DER": {
+          "napo_pie_DER": {
+            "x": 47.01,
+            "y": -4.13,
+            "rotation": 71.26,
+            "width": 121,
+            "height": 134
+          }
+        },
+        "bija_1": {
+          "bija_1": {
+            "x": 17.43,
+            "y": -9.55,
+            "rotation": 90,
+            "width": 171,
+            "height": 96
+          }
+        },
+        "bija_2": {
+          "bija_2": {
+            "x": 19.66,
+            "y": 12.21,
+            "rotation": 91.47,
+            "width": 143,
+            "height": 91
+          }
+        },
+        "napo_bDER": {
+          "napo_bDER": {
+            "x": 55.22,
+            "y": -39.75,
+            "rotation": 98.43,
+            "width": 142,
+            "height": 129
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "ani1": {
+      "bones": {
+        "CUERPO": {
+          "translate": [
+            {},
+            {
+              "time": 0.4333,
+              "y": -3.98
+            },
+            {
+              "time": 1
+            }
+          ]
+        },
+        "BRAZO_DER": {
+          "rotate": [
+            {},
+            {
+              "time": 0.2333,
+              "value": -5.36
+            },
+            {
+              "time": 0.5,
+              "value": -7.63
+            },
+            {
+              "time": 1
+            }
+          ],
+          "translate": [
+            {},
+            {
+              "time": 0.5,
+              "y": -2
+            },
+            {
+              "time": 1
+            }
+          ]
+        },
+        "bija1": {
+          "rotate": [
+            {},
+            {
+              "time": 0.4333,
+              "value": -2.67
+            },
+            {
+              "time": 1
+            }
+          ]
+        },
+        "bija2": {
+          "rotate": [
+            {},
+            {
+              "time": 0.4333,
+              "value": 3.45
+            },
+            {
+              "time": 1
+            }
+          ]
+        },
+        "pIZQ": {
+          "rotate": [
+            {},
+            {
+              "time": 0.4333,
+              "value": 3.09
+            },
+            {
+              "time": 1
+            }
+          ]
+        },
+        "pDER": {
+          "rotate": [
+            {},
+            {
+              "time": 0.4333,
+              "value": -6.6
+            },
+            {
+              "time": 1
+            }
+          ]
+        }
+      }
+    }
+  }
+}
