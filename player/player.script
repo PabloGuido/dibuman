@@ -69,7 +69,7 @@ function init(self)
 	datos.player_pos = go.get_position()
 	pos_inicial = datos.player_pos;
 	msg.post("main:/player/bija", "disable")
-	
+
 end
 
 local function play_animation(self, anim)
@@ -218,6 +218,19 @@ local function perder_vida()
 	end
 end
 
+local function mover_camara_jefe()
+	msg.post(CAMERA_ID, "unfollow")
+	msg.post("", "release_input_focus")
+	local pos = go.get_position()
+	go.animate("camera", "position.x", go.PLAYBACK_ONCE_FORWARD, pos.x + 360, go.EASING_LINEAR, 2)
+	msg.post("/paredes", "disable")
+	go.set_position(vmath.vector3(pos.x - 250, 248, 0), "/paredes")
+	msg.post("/paredes", "enable")
+	print(pos)
+	--msg.post(CAMERA_ID, "follow", {target = PLAYER_ID, vertical = false, offset = vmath.vector3(90, 0, 0)})
+	--go.set_position(vmath.vector3(0, 180, 0), CAMERA_ID )
+
+end
 
 
 function on_message(self, message_id, message, sender)
@@ -239,6 +252,8 @@ function on_message(self, message_id, message, sender)
 		--print("empezar juego player script")
 	elseif message_id == hash("restart_game") then
 		restart_game()
+	elseif message_id == hash("activar_jefe") then
+		mover_camara_jefe()
 	end
 end
 
