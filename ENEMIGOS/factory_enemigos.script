@@ -9,7 +9,6 @@ local function cada_cuanto_random()
 	cada_cuanto_naranja = math.random(3, 6)
 end
 local function crear_enemigo()
-	--local pos_inicial = vmath.vector3(datos.player_pos.x+720 ,140,1) 
 	if not datos.game_over then
 		contador_naranjas = contador_naranjas + 1;
 		if contador_naranjas >= cada_cuanto_naranja then
@@ -51,7 +50,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("empezar_juego") then
 		print("empezar a crear enemeigos")
-		timer.delay(1, true, crear_enemigo) -- 1.25?
+		timer.delay(1.15, true, crear_enemigo) -- 1.25?
 	end
 end
 
