@@ -8,21 +8,23 @@ local cancelar_parpadeo
 go.property("parent", msg.url())
 go.property("mi_id", msg.url())
 go.property("sprite")
+go.property("cuenta_pelotas", 0)
+go.property("color_pelota", 0)
 function init(self)
 	-- vars
 	self.direccion = 0;
 	-- Posicion inicial de la pelota
 	local pos = go.get_position(self.mi_id)
-	go.set_position(vmath.vector3(pos.x, pos.y + 90, pos.z))
+	go.set_position(vmath.vector3(pos.x - 50, pos.y + 90, 1))
 	-- Parpadero inicial
-	
-	--print(self.sprite)
-	--go.get(, "#sprite")
 	self.sprite = msg.url(nil, go.get_id(), "sprite")
-	print(self.sprite)
-	--print(go.get_id())
 	parpadeo_pelota(self)
-	--go.animate(self.sprite, "tint.w", go.PLAYBACK_LOOP_BACKWARD, 0, go.EASING_LINEAR, 0.25)
+
+	
+	-- COLOR pelota
+	if self.color_pelota == 1 then
+		sprite.play_flipbook(self.sprite, "green")
+	end
 end
 
 function final(self)
@@ -39,7 +41,7 @@ function update(self, dt)
 	local pos_player = datos.player_pos;
 	if pos.x < pos_player.x - 500 then
 		go.delete(".", true)
-		print("Eliminar pelota")
+		--print("Eliminar pelota")
 	end
 end
 
@@ -57,5 +59,9 @@ cancelar_parpadeo = function(self)
 	go.set(self.sprite, "tint.w", 1)
 	go.cancel_animations(self.sprite)
 	self.direccion = -1;
-	msg.post(self.parent, "crear_nueva_pelota")
+	if self.cuenta_pelotas >= 3 then
+		return
+	else
+		msg.post(self.parent, "crear_nueva_pelota")
+	end
 end
