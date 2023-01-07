@@ -230,6 +230,9 @@ local function mover_camara_jefe()
 	-- acomodar direccion donde mira player
 	mirar_a_la_derecha = true;
 	cambiar_direccio_vista(0, 1)
+	vidas = 2;
+	msg.post("main:/gui#gui", "restablecer_vidas")
+
 	-- mover pared izquierda
 	local pos = go.get_position()
 	msg.post("/paredes", "disable")

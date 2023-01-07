@@ -15,6 +15,7 @@ local restart_flag
 local tabla_vidas
 local vidas_visibles = false;
 --
+local restablecer_vidas;
 local function mostrar_vidas()
 	if vidas_visibles then
 		for i = #tabla_vidas, 1, -1 do
@@ -89,6 +90,8 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("game_over") then
 		timer.delay(0.5, false, mostrar_gameover)
 		--mostrar_gameover()
+	elseif message_id == hash("restablecer_vidas") then
+		restablecer_vidas();
 	end
 end
 
@@ -111,6 +114,13 @@ desactivar_nodos_iniciales = function()
 	gui.animate(empezar, "color.w", 0, gui.EASING_LINEAR, 1)
 	gui.animate(bija_titulo, "color.w", 0, gui.EASING_LINEAR, 1)
 end
+
+
+restablecer_vidas = function()
+	mostrar_vidas()
+end
+
+
 
 
 
