@@ -3,6 +3,7 @@ math.randomseed(socket.gettime()*10000)
 go.property("pos_player", 0)
 -- vars
 local parent_url;
+local vidas = 2;
 -- ataque pelotas
 local cuenta_pelotas = 0;
 local pelotas_tabla = {};
@@ -55,10 +56,11 @@ ataque_pelotas = function(self)
 	reseteo_ataque_pelotas(self)
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+perder_vida = function()
+	vidas = vidas - 1;
+	if vidas <= 0 then
+		print("Napo: 0 vidas.");
+	end
 end
 
 function update(self, dt)
@@ -67,17 +69,13 @@ function update(self, dt)
 	-- Remove this function if not needed
 end
 
-function fixed_update(self, dt)
-	-- This function is only called if 'Use Fixed Timestep' is enabled in the Physics section of game.project
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("crear_nueva_pelota") then
 		print("crear nueva pelota")
 		ataque_pelotas(self)
+	elseif message_id == hash("perder_vida") then
+		perder_vida();
 	end
 end
 

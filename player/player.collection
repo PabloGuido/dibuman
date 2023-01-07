@@ -280,6 +280,7 @@ embedded_instances {
   "restitution: 0.5\\n"
   "group: \\\"bija\\\"\\n"
   "mask: \\\"enemigo\\\"\\n"
+  "mask: \\\"pelota\\\"\\n"
   "embedded_collision_shape {\\n"
   "  shapes {\\n"
   "    shape_type: TYPE_BOX\\n"

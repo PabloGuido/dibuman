@@ -4,6 +4,9 @@ local pos_player
 -- funcs
 local parpadeo_pelota
 local cancelar_parpadeo
+-- hashes
+local respuesta_t = hash("trigger_response")
+local bija_t = hash("bija")
 --
 go.property("parent", msg.url())
 go.property("mi_id", msg.url())
@@ -19,12 +22,18 @@ function init(self)
 	-- Parpadero inicial
 	self.sprite = msg.url(nil, go.get_id(), "sprite")
 	parpadeo_pelota(self)
-
 	
 	-- COLOR pelota
 	if self.color_pelota == 1 then
 		sprite.play_flipbook(self.sprite, "green")
+		self.pelotazo = true;
 	end
+	-- Collision pelota
+	self.enemigo = msg.url(nil, go.get_id(), "enemigo")
+	self.pelota = msg.url(nil, go.get_id(), "pelota")
+	msg.post(self.enemigo, "disable")
+	msg.post(self.pelota, "disable")
+	
 end
 
 function final(self)
@@ -45,23 +54,51 @@ function update(self, dt)
 	end
 end
 
+local function pelotazo_napo(self)
+	local napo_pos = go.get_position(self.parent)
+	napo_pos.y = napo_pos.y + 300;
+	napo_pos.x = napo_pos.x + 20;
+	go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, napo_pos, go.EASING_LINEAR, 0.25, 0,
+	function()
+		msg.post(self.parent, "perder_vida")
+		go.delete(".", true)
+	end)
+end
+
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	if message_id == respuesta_t then
+		if message.enter and message.other_group == bija_t and self.pelotazo then
+			self.direccion = 0;
+			pelotazo_napo(self)
+			print("Responder con bijazo")
+		end
+	end	
 end
 parpadeo_pelota = function(self)
 	go.animate(self.sprite, "tint.w", go.PLAYBACK_LOOP_BACKWARD, 0.1, go.EASING_LINEAR, 0.25)
 	timer.delay(1.5, false, cancelar_parpadeo)
 end
 
+local function chequeo_enemigo_o_pelotas(self)
+	if self.color_pelota ~= 1 then
+		msg.post(self.enemigo, "enable")
+		else
+		msg.post(self.pelota, "enable")
+	end
+end
+
 cancelar_parpadeo = function(self)
 	go.set(self.sprite, "tint.w", 1)
 	go.cancel_animations(self.sprite)
 	self.direccion = -1;
+	chequeo_enemigo_o_pelotas(self);
 	if self.cuenta_pelotas >= 3 then
 		return
 	else
-		msg.post(self.parent, "crear_nueva_pelota")
+		if datos.game_over == false and datos.juego_ganado == false then
+			msg.post(self.parent, "crear_nueva_pelota")
+		end
 	end
 end
+
+

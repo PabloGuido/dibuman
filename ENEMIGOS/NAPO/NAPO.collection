@@ -25,7 +25,7 @@ embedded_instances {
   id: "ataques"
   data: "components {\n"
   "  id: \"ataque_pelotas\"\n"
-  "  component: \"/ENEMIGOS/NAPO/ataques/ataque_pelotas.factory\"\n"
+  "  component: \"/ENEMIGOS/NAPO/ataque pelotas/ataque_pelotas.factory\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
