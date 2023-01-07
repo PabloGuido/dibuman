@@ -1,18 +1,18 @@
 -- props
 go.property("pos_player", 0)
 -- vars
-
+local parent_url;
 -- funcs
 local ataque_1
 function init(self)
-	local parent_url = msg.url()
+	parent_url = msg.url()
 	msg.post("#collisionobject", "disable")
 	local pos = go.get_position()
 	go.animate("NAPO", "position.x", go.PLAYBACK_ONCE_FORWARD, self.pos_player + 690, go.EASING_LINEAR, 1, 0,
 	function()
 		msg.post("/player/player", "acquire_input_focus")
 		msg.post("#collisionobject", "enable")
-		factory.create("ataques#ataque_pelotas", nil, nil, {parent = parent_url})
+		local pelota = factory.create("ataques#ataque_pelotas", nil, nil, {parent = parent_url, mi_id = pelota})
 	end)
 end
 
@@ -38,6 +38,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("crear_nueva_pelota") then
 		print("crear nueva pelota")
+		local pelota = factory.create("ataques#ataque_pelotas", nil, nil, {parent = parent_url, mi_id = pelota})
 	end
 end
 

@@ -1,23 +1,21 @@
 local datos = require("main.datos")
 local velocidad = 200;
-local direccion = 0;
 local pos_player
-
+-- funcs
+local parpadeo_pelota
+local cancelar_parpadeo
+--
 go.property("parent", msg.url())
-local function cancelar_parpadeo(self)
-	go.cancel_animations("#sprite")
-	direccion = -1;
-	msg.post(self.parent, "crear_nueva_pelota")
-end
+go.property("mi_id", msg.url())
 
 function init(self)
-	print(self.parent)
+	-- vars
+	self.direccion = 0;
 	-- Posicion inicial de la pelota
-	local pos = go.get_position()
+	local pos = go.get_position(self.mi_id)
 	go.set_position(vmath.vector3(pos.x, pos.y + 90, pos.z))
 	-- Parpadero inicial
-	go.animate("#sprite", "tint.w", go.PLAYBACK_LOOP_BACKWARD, 0, go.EASING_LINEAR, 0.25)
-	timer.delay(1.5, false, cancelar_parpadeo)
+	parpadeo_pelota(self)
 end
 
 function final(self)
@@ -27,13 +25,13 @@ function final(self)
 end
 
 function update(self, dt)
-	local pos = go.get_position()
-	pos.x = pos.x + 5 * velocidad * direccion * dt
+	local pos = go.get_position(self.mi_id)
+	pos.x = pos.x + 5 * velocidad * self.direccion * dt
 	go.set_position(pos)
 
 	local pos_player = datos.player_pos;
 	if pos.x < pos_player.x - 500 then
-		go.delete(".")
+		go.delete(".", true)
 		print("Eliminar pelota")
 	end
 end
@@ -43,21 +41,13 @@ function on_message(self, message_id, message, sender)
 	-- Learn more: https://defold.com/manuals/message-passing/
 	-- Remove this function if not needed
 end
-
-function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
+parpadeo_pelota = function(self)
+	--go.animate("#sprite", "tint.w", go.PLAYBACK_LOOP_BACKWARD, 0, go.EASING_LINEAR, 0.25)
+	timer.delay(1.5, false, cancelar_parpadeo)
 end
 
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
+cancelar_parpadeo = function(self)
+	go.cancel_animations("#sprite")
+	self.direccion = -1;
+	msg.post(self.parent, "crear_nueva_pelota")
 end
