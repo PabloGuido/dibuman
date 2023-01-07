@@ -70,6 +70,14 @@ images {
   image: "/ENEMIGOS/NAPO/bija_2.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
+images {
+  image: "/ENEMIGOS/NAPO/red.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/ENEMIGOS/NAPO/green.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

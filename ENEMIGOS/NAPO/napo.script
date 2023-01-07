@@ -1,4 +1,9 @@
+-- props
 go.property("pos_player", 0)
+-- vars
+
+-- funcs
+local ataque_1
 function init(self)
 	msg.post("#collisionobject", "disable")
 	local pos = go.get_position()
