@@ -7,7 +7,7 @@ local cancelar_parpadeo
 --
 go.property("parent", msg.url())
 go.property("mi_id", msg.url())
-
+go.property("sprite")
 function init(self)
 	-- vars
 	self.direccion = 0;
@@ -15,7 +15,14 @@ function init(self)
 	local pos = go.get_position(self.mi_id)
 	go.set_position(vmath.vector3(pos.x, pos.y + 90, pos.z))
 	-- Parpadero inicial
+	
+	--print(self.sprite)
+	--go.get(, "#sprite")
+	self.sprite = msg.url(nil, go.get_id(), "sprite")
+	print(self.sprite)
+	--print(go.get_id())
 	parpadeo_pelota(self)
+	--go.animate(self.sprite, "tint.w", go.PLAYBACK_LOOP_BACKWARD, 0, go.EASING_LINEAR, 0.25)
 end
 
 function final(self)
@@ -42,12 +49,13 @@ function on_message(self, message_id, message, sender)
 	-- Remove this function if not needed
 end
 parpadeo_pelota = function(self)
-	--go.animate("#sprite", "tint.w", go.PLAYBACK_LOOP_BACKWARD, 0, go.EASING_LINEAR, 0.25)
+	go.animate(self.sprite, "tint.w", go.PLAYBACK_LOOP_BACKWARD, 0.1, go.EASING_LINEAR, 0.25)
 	timer.delay(1.5, false, cancelar_parpadeo)
 end
 
 cancelar_parpadeo = function(self)
-	go.cancel_animations("#sprite")
+	go.set(self.sprite, "tint.w", 1)
+	go.cancel_animations(self.sprite)
 	self.direccion = -1;
 	msg.post(self.parent, "crear_nueva_pelota")
 end
