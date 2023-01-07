@@ -230,14 +230,19 @@ local function mover_camara_jefe()
 	-- acomodar direccion donde mira player
 	mirar_a_la_derecha = true;
 	cambiar_direccio_vista(0, 1)
-	-- 
-	-- mover camara
-	local pos = go.get_position()
-	go.animate("camera", "position.x", go.PLAYBACK_ONCE_FORWARD, pos.x + 360, go.EASING_LINEAR, 2)
 	-- mover pared izquierda
+	local pos = go.get_position()
 	msg.post("/paredes", "disable")
 	go.set_position(vmath.vector3(pos.x - 250, 248, 0), "/paredes")
 	msg.post("/paredes", "enable")
+	-- mover camara
+	
+	go.animate("camera", "position.x", go.PLAYBACK_ONCE_FORWARD, pos.x + 360, go.EASING_LINEAR, 2, 0,
+	function()
+		msg.post("/factory#factory_enemigos", "crear_jefe")
+		puede_ser_tocado = true;
+	end)
+
 
 end
 

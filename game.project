@@ -20,6 +20,3 @@ dependencies#1 = https://github.com/defold/extension-spine/archive/refs/tags/2.6
 [sound]
 max_component_count = 256
 
-[physics]
-debug = 1
-
