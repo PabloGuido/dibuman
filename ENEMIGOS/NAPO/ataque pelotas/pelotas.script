@@ -14,6 +14,10 @@ go.property("sprite")
 go.property("cuenta_pelotas", 0)
 go.property("color_pelota", 0)
 function init(self)
+	if datos.juego_ganado or datos.game_over then
+		go.delete(".", true)
+		return
+	end
 	-- vars
 	self.direccion = 0;
 	-- Posicion inicial de la pelota
@@ -58,9 +62,9 @@ local function pelotazo_napo(self)
 	local napo_pos = go.get_position(self.parent)
 	napo_pos.y = napo_pos.y + 300;
 	napo_pos.x = napo_pos.x + 20;
+	msg.post(self.parent, "perder_vida")
 	go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, napo_pos, go.EASING_LINEAR, 0.25, 0,
 	function()
-		msg.post(self.parent, "perder_vida")
 		go.delete(".", true)
 	end)
 end
