@@ -37,6 +37,8 @@ function init(self)
 	self.pelota = msg.url(nil, go.get_id(), "pelota")
 	msg.post(self.enemigo, "disable")
 	msg.post(self.pelota, "disable")
+	-- flag sonido
+	self.reproduciendo_sonido = false;
 	
 end
 
@@ -63,8 +65,9 @@ local function pelotazo_napo(self)
 	napo_pos.y = napo_pos.y + 300;
 	napo_pos.x = napo_pos.x + 20;
 	msg.post(self.parent, "perder_vida")
-	go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, napo_pos, go.EASING_LINEAR, 0.25, 0,
+	go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, napo_pos, go.EASING_LINEAR, 0.35, 0,
 	function()
+		msg.post(self.parent, "animar_golpe")
 		go.delete(".", true)
 	end)
 end
@@ -72,9 +75,14 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == respuesta_t then
 		if message.enter and message.other_group == bija_t and self.pelotazo then
+			sound.play("#sound_copa", {gain = 0.5})
 			self.direccion = 0;
 			pelotazo_napo(self)
-			print("Responder con bijazo")
+			--print("Responder con bijazo")
+			return
+		elseif message.enter and message.other_group == hash("player") and not self.reproduciendo_sonido then
+			self.reproduciendo_sonido = true;
+			sound.play("#sound_cuerpo", {gain = 0.5})
 		end
 	end	
 end

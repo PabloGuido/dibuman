@@ -236,7 +236,7 @@ local function mover_camara_jefe()
 	-- mover pared izquierda
 	local pos = go.get_position()
 	msg.post("/paredes", "disable")
-	go.set_position(vmath.vector3(pos.x - 250, 248, 0), "/paredes")
+	--go.set_position(vmath.vector3(pos.x - 250, 248, 0), "/paredes")
 	msg.post("/paredes", "enable")
 	-- mover camara
 	
@@ -271,6 +271,8 @@ function on_message(self, message_id, message, sender)
 		restart_game()
 	elseif message_id == hash("activar_jefe") then
 		mover_camara_jefe()
+	elseif message_id == hash("juego_ganado") then
+		msg.post("", "release_input_focus")
 	end
 end
 
@@ -389,11 +391,18 @@ local function restablecer_player()
 	msg.post("main:/gui#gui", "empezar_juego")
 	puede_ser_tocado = true;
 	datos.game_over = false;
+	datos.jefe_activo = false;
+	mirar_a_la_derecha = false;
 	msg.post("", "acquire_input_focus")
+	msg.post("/detector/jefe#collisionobject", "enable")
+	--/jefe#collisionobject
 end
 
 restart_game = function()
 	print("restart game")
+	--msg.post(CAMERA_ID, "follow");
+	msg.post("camera", "follow", { target = PLAYER_ID, vertical = false })
+	--go.set_position(vmath.vector3(0, 200, 0), CAMERA_ID )
 	go.animate("player", "position", go.PLAYBACK_ONCE_FORWARD, pos_inicial, go.EASING_LINEAR, 1, 0, 
 	function()
 		restablecer_player()

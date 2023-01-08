@@ -6,7 +6,7 @@ local datos = require("main.datos");
 local parent_url;
 local vidas = 2;
 -- ataque pelotas
-local cuenta_pelotas = 0;
+local cuenta_pelotas;
 local pelotas_tabla = {};
 pelotas_tabla[1] = {1,0,0}
 pelotas_tabla[2] = {0,1,0}
@@ -32,7 +32,10 @@ function init(self)
 	--
 	self.fue_vencido = false;
 	self.spine_model = msg.url(nil, go.get_id(), "spinemodel")
-	
+
+	--
+	datos.jefe_activo = true;
+	cuenta_pelotas = 0;
 end
 
 local function pelota_color_random()
@@ -71,18 +74,25 @@ local function cancelar_tint_spine(self)
 	go.animate(go.get_id(), "scale", go.PLAYBACK_ONCE_FORWARD, 0.5, go.EASING_LINEAR, 3)
 	go.animate(self.spine_model, "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(1,1, 1, 0), go.EASING_LINEAR, 3, 0,
 	function()
+		msg.post("/player/player", "juego_ganado")
 		go.delete(".", true)
 	end)
 end
 
 eliminar_napo = function(self) -- acá restaurar todos los valores por si hay que hacer restart.
-	datos.juego_ganado = true; -- ver esta flag ? creo que no.
+	--datos.juego_ganado = true; -- ver esta flag ? creo que no.
 	--self.fue_vencido = true;
 	vidas = 2;
 	cuenta_pelotas = 0;
 	necesita_nuevo_orden_pelotas = true;
-	go.animate(self.spine_model, "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1, 0.15, 0.15, 0.5), go.EASING_LINEAR, 0.75, 0.5)
-	timer.delay(4, false, cancelar_tint_spine)
+	if datos.game_over then
+		go.delete(".", true)
+	else
+		go.animate(self.spine_model, "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1, 0.15, 0.15, 0.5), go.EASING_LINEAR, 0.75, 0.5)
+		timer.delay(4, false, cancelar_tint_spine)
+		datos.juego_ganado = true;
+	end
+	-------------------------------------------------------
 end
 
 perder_vida = function(self)
@@ -94,19 +104,19 @@ perder_vida = function(self)
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	if datos.game_over then
+		eliminar_napo(self)
+	end
 end
 
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("crear_nueva_pelota") then
-		--if self.fue_vencido == false then
-			ataque_pelotas(self)
-		--end
+		ataque_pelotas(self)
 	elseif message_id == hash("perder_vida") then
 		perder_vida(self);
+	elseif message_id == hash("animar_golpe") then
+		go.animate(go.get_id(), "euler.z", go.PLAYBACK_ONCE_PINGPONG, -10, go.EASING_INCIRC, 0.25)
 	end
 end
 

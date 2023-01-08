@@ -30,7 +30,8 @@ function on_message(self, message_id, message, sender)
 		if message.enter then
 			msg.post("main:/player/player", "activar_jefe")
 			print("empezar secuencia jefe")
-			go.delete(".")
+			msg.post("#collisionobject", "disable")
+			--go.delete(".")
 		end
 	end
 end
