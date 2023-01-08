@@ -57,7 +57,7 @@ function init(self)
 	msg.post(CAMERA_ID, "follow", {target = PLAYER_ID, vertical = false, offset = vmath.vector3(90, 0, 0)})
 	go.set_position(vmath.vector3(0, 180, 0), CAMERA_ID )
 	msg.post(CAMERA_ID, "zoom_to", { zoom = 2.5 })
-	--empezar_juego()
+
 	-- initial player velocity
 	self.velocity = vmath.vector3(0, 0, 0)
 	-- support variable to keep track of collisions and separation
@@ -370,6 +370,18 @@ end
 
 ------
 
+local function empezar_juego_delay()
+	go.animate(CAMERA_ID, "zoom", go.PLAYBACK_ONCE_FORWARD, 1.15, go.EASING_INBACK, 1.25, 0, 
+	function()
+		msg.post("", "acquire_input_focus")
+		msg.post("main:/factory#factory_enemigos", "empezar_juego")
+		msg.post("main:/gui#gui", "empezar_juego")
+
+	end)	
+	go.animate(CAMERA_ID, "follow_offset", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(0, 0, 0), go.EASING_INBACK, 1.25)
+	go.set_position(vmath.vector3(0, 200, 0), CAMERA_ID )
+end
+
 empezar_juego = function()
 	spine.cancel("main:/player/spine#spinemodel")
 	sound.play("#sound")
@@ -379,18 +391,8 @@ empezar_juego = function()
 		local anim_props = { blend_duration = 0.1 }
 		spine.play_anim("main:/player/spine#spinemodel", anim_idle, go.PLAYBACK_LOOP_FORWARD, anim_props)
 		self.anim = nil
-		go.animate(CAMERA_ID, "zoom", go.PLAYBACK_ONCE_FORWARD, 1.15, go.EASING_INBACK, 1.25, 0, 
-		function()
-			msg.post("", "acquire_input_focus")
-			msg.post("main:/factory#factory_enemigos", "empezar_juego")
-			msg.post("main:/gui#gui", "empezar_juego")
-			
-		end)
-	
-		go.animate(CAMERA_ID, "follow_offset", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(0, 0, 0), go.EASING_INBACK, 1.25)
-		go.set_position(vmath.vector3(0, 200, 0), CAMERA_ID )
 	end)
-
+	timer.delay(0.5, false, empezar_juego_delay)
 end
 
 
