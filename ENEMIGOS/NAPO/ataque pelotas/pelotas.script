@@ -10,7 +10,7 @@ local bija_t = hash("bija")
 --
 go.property("parent", msg.url())
 go.property("mi_id", msg.url())
-go.property("sprite")
+
 go.property("cuenta_pelotas", 0)
 go.property("color_pelota", 0)
 function init(self)
