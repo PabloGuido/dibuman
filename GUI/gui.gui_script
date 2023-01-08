@@ -11,6 +11,8 @@ local v2
 local v3
 local restart
 local restart_flag
+local flecha;
+local parpadeo_flecha;
 --
 local tabla_vidas
 local vidas_visibles = false;
@@ -58,6 +60,9 @@ function init(self)
 	gui.set_alpha(restart, 0);
 	gui.set_enabled(restart, false)
 	gui.set_enabled(restart_flag, false)
+
+	flecha = gui.get_node("flecha");
+	gui.set_enabled(flecha, false)
 	--
 	gui.animate(bija_titulo, "scale", 1.05, gui.EASING_LINEAR, 2, 0, nil, gui.PLAYBACK_LOOP_PINGPONG)
 	
@@ -66,21 +71,20 @@ function init(self)
 	gui.animate(empezar, "color.w", 1, gui.EASING_LINEAR, 0.5, 0, function() msg.post("", "acquire_input_focus") end)
 	
 end
-
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+local function cancelar_parpadeo()
+	gui.cancel_animation(flecha, "scale");
+	gui.set_scale(flecha, vmath.vector4(1, 1, 1, 1));
+	gui.set_enabled(flecha, false);
 end
-
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+parpadeo_flecha = function()
+	gui.set_enabled(flecha, true)
+	gui.animate(flecha, "scale", 1.15, gui.EASING_LINEAR, 0.75, 0, nil, gui.PLAYBACK_LOOP_PINGPONG)
+	timer.delay(3, false, cancelar_parpadeo)
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("empezar_juego") then
+		parpadeo_flecha();
 		vidas_visibles = true;
 		mostrar_vidas()
 		--print("mostrar vidas")
