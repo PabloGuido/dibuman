@@ -4,7 +4,7 @@ go.property("pos_player", 0)
 -- vars
 local datos = require("main.datos");
 local parent_url;
-local vidas = 2;
+local vidas = 5;
 -- ataque pelotas
 local cuenta_pelotas;
 local pelotas_tabla = {};
@@ -23,7 +23,7 @@ function init(self)
 	parent_url = msg.url()
 	msg.post("#collisionobject", "disable")
 	local pos = go.get_position()
-	go.animate("NAPO", "position.x", go.PLAYBACK_ONCE_FORWARD, self.pos_player + 690, go.EASING_LINEAR, 1, 0,
+	go.animate("NAPO", "position.x", go.PLAYBACK_ONCE_FORWARD, self.pos_player + 690, go.EASING_LINEAR, 5, 0,
 	function()
 		msg.post("/player/player", "acquire_input_focus")
 		msg.post("#collisionobject", "enable")
@@ -82,7 +82,7 @@ end
 eliminar_napo = function(self) -- acá restaurar todos los valores por si hay que hacer restart.
 	--datos.juego_ganado = true; -- ver esta flag ? creo que no.
 	--self.fue_vencido = true;
-	vidas = 2;
+	vidas = 5;
 	cuenta_pelotas = 0;
 	necesita_nuevo_orden_pelotas = true;
 	if datos.game_over then
@@ -118,7 +118,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("perder_vida") then
 		perder_vida(self);
 	elseif message_id == hash("animar_golpe") then
-		sound.play("#sound", {gain = 0.75});
+		sound.play("#sound", {gain = 0.25});
 		go.animate(go.get_id(), "euler.z", go.PLAYBACK_ONCE_PINGPONG, -10, go.EASING_INCIRC, 0.25)
 	end
 end

@@ -81,7 +81,7 @@ end
 parpadeo_flecha = function()
 	gui.set_enabled(flecha, true)
 	gui.animate(flecha, "scale", 1.15, gui.EASING_LINEAR, 0.75, 0, nil, gui.PLAYBACK_LOOP_PINGPONG)
-	timer.delay(3, false, cancelar_parpadeo)
+	timer.delay(4, false, cancelar_parpadeo)
 end
 
 function on_message(self, message_id, message, sender)

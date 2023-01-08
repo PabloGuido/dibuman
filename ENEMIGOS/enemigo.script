@@ -78,7 +78,7 @@ function on_message(self, message_id, message, sender)
 			end
 		elseif message.other_group == player_t and message.enter then
 				eliminar_enemigo(self)
-				reproducir_sonido(self, "#sound_cuerpo", 0.8)
+				reproducir_sonido(self, "#sound_cuerpo", 1)
 		end
 			
 	end

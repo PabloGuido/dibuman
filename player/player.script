@@ -76,6 +76,8 @@ function init(self)
 	msg.post("main:/player/bija", "disable")
 	-- pared
 	pos_inicial_pared = go.get_position("/paredes")
+	-- musica fondo
+	sound.play("#musica", {gain = 0.1})
 end
 
 local function play_animation(self, anim)
@@ -284,6 +286,7 @@ function on_message(self, message_id, message, sender)
 		msg.post("", "release_input_focus")
 	elseif message_id == hash("no_puede_ser_tocado") then
 		go.cancel_animations("/player/placebo")
+		go.set("spine#spinemodel", "tint.w", 1)
 		vidas = 5;
 		puede_ser_tocado = false;
 	end
