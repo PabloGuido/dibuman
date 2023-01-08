@@ -130,7 +130,7 @@ function on_input(self, action_id, action)
 			desactivar_nodos_iniciales()
 		elseif gui.pick_node(restart, action.x, action.y) and gui.is_enabled(restart_flag) then
 			restart_game()
-			print("restart game")
+			--print("restart game")
 		end
 	
 

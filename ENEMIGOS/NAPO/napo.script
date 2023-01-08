@@ -43,7 +43,7 @@ local function pelota_color_random()
 		--math.randomseed(socket.gettime()*10000)
 		necesita_nuevo_orden_pelotas = false;
 		orden_pelotas = pelotas_tabla[math.random(1,3)] -- Determina cual de las tres pelotas es verde.
-		pprint(orden_pelotas)
+		--pprint(orden_pelotas)
 	end
 end
 
@@ -100,7 +100,7 @@ end
 perder_vida = function(self)
 	vidas = vidas - 1;
 	if vidas <= 0 then
-		print("Napo: 0 vidas.");
+		--print("Napo: 0 vidas.");
 		eliminar_napo(self)
 	end
 end

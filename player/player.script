@@ -201,7 +201,7 @@ local function restablecer_perder_vida()
 end
 
 local function game_over()
-	print("game over")
+	--print("game over")
 	msg.post("", "release_input_focus")
 	datos.game_over = true;
 	datos.gain = 0;
@@ -214,7 +214,7 @@ local function perder_vida()
 	puede_ser_tocado = false;
 	msg.post("main:/gui#gui", "perder_vida", {vidas = vidas})
 	if vidas >= 1 then
-		print("contacto con el enemgio, perder una vida")
+		--print("contacto con el enemgio, perder una vida")
 		vidas = vidas - 1
 		go.animate("spine#spinemodel", "tint.w", go.PLAYBACK_LOOP_PINGPONG, 0.25, go.EASING_LINEAR, 0.5)
 		go.animate("spine", "scale", go.PLAYBACK_LOOP_PINGPONG, 1.015, go.EASING_LINEAR, 0.25)
@@ -287,7 +287,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("juego_ganado") then
 		msg.post("", "release_input_focus")
 		msg.post("main:/gui#gui", "empezar_secuencia_final")
-		print("empezar secuencia final")
+		--print("empezar secuencia final")
 	elseif message_id == hash("no_puede_ser_tocado") then
 		--go.cancel_animations("/player/placebo")
 		go.set("spine#spinemodel", "tint.w", 1)
@@ -341,7 +341,7 @@ local function activar_bija()
 end
 local function golpe(self)
 	spine.cancel("main:/player/spine#spinemodel")
-	print("BIJAZO")
+	--print("BIJAZO")
 	golpeando = true
 	sound.play("#sound")
 	local anim_props = { blend_duration = 0.1 }
@@ -436,7 +436,7 @@ local function restablecer_player()
 end
 
 restart_game = function()
-	print("restart game")
+	--print("restart game")
 	--msg.post(CAMERA_ID, "follow");
 	msg.post("camera", "follow", { target = PLAYER_ID, vertical = false })
 	mover_pared(pos_inicial_pared);

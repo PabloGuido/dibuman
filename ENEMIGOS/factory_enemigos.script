@@ -49,13 +49,13 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("empezar_juego") then
-		print("empezar a crear enemeigos")
+		--print("empezar a crear enemeigos")
 		timer.delay(1.25, true, crear_enemigo) -- 1.25?
 	elseif message_id == hash("restart_game") then
-		print("Volver a crear enemeigos")
+		--print("Volver a crear enemeigos")
 		datos.eliminar_enemigos = false;
 	elseif message_id == hash("crear_jefe") then
-		print("crear jefe factory")
+		--print("crear jefe factory")
 		local p = datos.player_pos;
 		local pos = vmath.vector3(p.x + 1000, p.y-25, 0.5)
 		collectionfactory.create("#napo_fac", pos, vmath.quat(),{[hash("/NAPO")] = {pos_player = p.x}})
