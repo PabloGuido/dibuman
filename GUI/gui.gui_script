@@ -118,7 +118,7 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("empezar_secuencia_final") then
 		gui.animate(texto_final, "color.w", 1, gui.EASING_LINEAR, 0.75)
-		timer.delay(1, false, final_final)
+		timer.delay(6, false, final_final)
 	end
 end
 
