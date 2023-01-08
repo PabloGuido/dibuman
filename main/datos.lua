@@ -7,6 +7,7 @@ M.juego_ganado = false;
 M.eliminar_enemigos = false;
 M.jefe_activo = false;
 
+
 M.empezar_juego = function()
 	msg.post("main:/player/player", "empezar_juego")
 end

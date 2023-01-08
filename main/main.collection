@@ -63,7 +63,7 @@ collection_instances {
   id: "detector"
   collection: "/DETECTOR/detector.collection"
   position {
-    x: 602.0
+    x: 6437.0
     y: 250.0
     z: 0.0
   }
