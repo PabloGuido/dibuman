@@ -202,6 +202,7 @@ local function game_over()
 	print("game over")
 	msg.post("", "release_input_focus")
 	datos.game_over = true;
+	go.set(PLAYER_ID, "position.y", 300)
 	go.animate("spine#spinemodel", "tint.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_LINEAR, 1)
 	msg.post("main:/gui#gui", "game_over")
 	-- enviar mensaje al gui
