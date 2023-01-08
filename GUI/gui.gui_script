@@ -13,6 +13,7 @@ local restart
 local restart_flag
 local flecha;
 local parpadeo_flecha;
+local controles;
 --
 local tabla_vidas
 local vidas_visibles = false;
@@ -63,6 +64,7 @@ function init(self)
 
 	flecha = gui.get_node("flecha");
 	gui.set_enabled(flecha, false)
+	controles = gui.get_node("controles");
 	--
 	gui.animate(bija_titulo, "scale", 1.05, gui.EASING_LINEAR, 2, 0, nil, gui.PLAYBACK_LOOP_PINGPONG)
 	
@@ -96,12 +98,17 @@ function on_message(self, message_id, message, sender)
 		--mostrar_gameover()
 	elseif message_id == hash("restablecer_vidas") then
 		restablecer_vidas();
+	elseif message_id == hash("ocultar_vidas") then
+		for i = #tabla_vidas, 1, -1 do
+			gui.set_alpha(tabla_vidas[i], 0)
+		end
 	end
 end
 
 function on_input(self, action_id, action)
 	if action_id == hash("touch") and action.pressed then
 		if gui.pick_node(empezar, action.x, action.y) and gui.is_enabled(empezar_flag) then
+			gui.set_enabled(controles, false);
 			datos.empezar_juego();
 			desactivar_nodos_iniciales()
 		elseif gui.pick_node(restart, action.x, action.y) and gui.is_enabled(restart_flag) then

@@ -282,6 +282,10 @@ function on_message(self, message_id, message, sender)
 		mover_camara_jefe()
 	elseif message_id == hash("juego_ganado") then
 		msg.post("", "release_input_focus")
+	elseif message_id == hash("no_puede_ser_tocado") then
+		go.cancel_animations("/player/placebo")
+		vidas = 5;
+		puede_ser_tocado = false;
 	end
 end
 

@@ -88,6 +88,8 @@ eliminar_napo = function(self) -- acá restaurar todos los valores por si hay qu
 	if datos.game_over then
 		go.delete(".", true)
 	else
+		msg.post("/player/player", "no_puede_ser_tocado");
+		msg.post("main:/gui#gui", "ocultar_vidas");
 		go.animate(self.spine_model, "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1, 0.15, 0.15, 0.5), go.EASING_LINEAR, 0.75, 0.5)
 		timer.delay(4, false, cancelar_tint_spine)
 		datos.juego_ganado = true;
@@ -116,6 +118,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("perder_vida") then
 		perder_vida(self);
 	elseif message_id == hash("animar_golpe") then
+		sound.play("#sound", {gain = 0.75});
 		go.animate(go.get_id(), "euler.z", go.PLAYBACK_ONCE_PINGPONG, -10, go.EASING_INCIRC, 0.25)
 	end
 end
