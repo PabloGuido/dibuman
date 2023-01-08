@@ -77,7 +77,7 @@ function init(self)
 	-- pared
 	pos_inicial_pared = go.get_position("/paredes")
 	-- musica fondo
-	sound.play("#musica", {gain = 0.1})
+	sound.play("#musica", {gain = 0.07})
 end
 
 local function play_animation(self, anim)
@@ -259,7 +259,9 @@ local function mover_camara_jefe()
 
 
 end
+local function secuencia_final()
 
+end
 
 function on_message(self, message_id, message, sender)
 	-- check if we received a contact point message
@@ -284,11 +286,27 @@ function on_message(self, message_id, message, sender)
 		mover_camara_jefe()
 	elseif message_id == hash("juego_ganado") then
 		msg.post("", "release_input_focus")
+		msg.post("main:/gui#gui", "empezar_secuencia_final")
+		print("empezar secuencia final")
 	elseif message_id == hash("no_puede_ser_tocado") then
-		go.cancel_animations("/player/placebo")
+		--go.cancel_animations("/player/placebo")
 		go.set("spine#spinemodel", "tint.w", 1)
 		vidas = 5;
 		puede_ser_tocado = false;
+	elseif message_id == hash("final_final") then
+		--msg.post("camera", "follow", { target = PLAYER_ID, vertical = false })
+		local pos = go.get_position();
+		pos.y = pos.y + 125;
+		pos.x = pos.x + 25;
+		go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD,pos, go.EASING_INBACK, 0.8)
+		go.animate(CAMERA_ID, "zoom", go.PLAYBACK_ONCE_FORWARD, 3, go.EASING_INBACK, 0.8)
+		go.animate("camera", "euler.z", go.PLAYBACK_ONCE_FORWARD,15, go.EASING_INBACK, 0.8, 0, 
+		function()
+			sound.play("#sound")
+			local anim_props = { blend_duration = 0.1 }
+			spine.play_anim("main:/player/spine#spinemodel", anim_golpe, go.PLAYBACK_ONCE_FORWARD, anim_props)
+		end)
+
 	end
 end
 

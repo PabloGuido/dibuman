@@ -4,7 +4,7 @@ go.property("pos_player", 0)
 -- vars
 local datos = require("main.datos");
 local parent_url;
-local vidas = 5;
+local vidas = 1;
 -- ataque pelotas
 local cuenta_pelotas;
 local pelotas_tabla = {};
@@ -23,7 +23,7 @@ function init(self)
 	parent_url = msg.url()
 	msg.post("#collisionobject", "disable")
 	local pos = go.get_position()
-	go.animate("NAPO", "position.x", go.PLAYBACK_ONCE_FORWARD, self.pos_player + 690, go.EASING_LINEAR, 5, 0,
+	go.animate("NAPO", "position.x", go.PLAYBACK_ONCE_FORWARD, self.pos_player + 690, go.EASING_LINEAR, 1, 0,
 	function()
 		msg.post("/player/player", "acquire_input_focus")
 		msg.post("#collisionobject", "enable")
