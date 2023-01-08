@@ -81,8 +81,8 @@ function on_message(self, message_id, message, sender)
 			--print("Responder con bijazo")
 			return
 		elseif message.enter and message.other_group == hash("player") and not self.reproduciendo_sonido then
-			self.reproduciendo_sonido = true;
-			sound.play("#sound_cuerpo", {gain = 0.5})
+				self.reproduciendo_sonido = true;
+				sound.play("#sound_cuerpo", {gain = 0.5})
 		end
 	end	
 end
