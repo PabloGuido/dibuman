@@ -4,7 +4,7 @@ go.property("pos_player", 0)
 -- vars
 local datos = require("main.datos");
 local parent_url;
-local vidas = 5;
+
 -- ataque pelotas
 local cuenta_pelotas;
 local pelotas_tabla = {};
@@ -20,6 +20,7 @@ local eliminar_napo;
 
 --
 function init(self)
+	self.vidas = 5;
 	parent_url = msg.url()
 	msg.post("#collisionobject", "disable")
 	local pos = go.get_position()
@@ -82,7 +83,7 @@ end
 eliminar_napo = function(self) -- acá restaurar todos los valores por si hay que hacer restart.
 	--datos.juego_ganado = true; -- ver esta flag ? creo que no.
 	--self.fue_vencido = true;
-	vidas = 5;
+	self.vidas = 5;
 	cuenta_pelotas = 0;
 	necesita_nuevo_orden_pelotas = true;
 	if datos.game_over then
@@ -98,8 +99,8 @@ eliminar_napo = function(self) -- acá restaurar todos los valores por si hay qu
 end
 
 perder_vida = function(self)
-	vidas = vidas - 1;
-	if vidas <= 0 then
+	self.vidas = self.vidas - 1;
+	if self.vidas <= 0 then
 		--print("Napo: 0 vidas.");
 		eliminar_napo(self)
 	end
@@ -121,22 +122,4 @@ function on_message(self, message_id, message, sender)
 		sound.play("#sound", {gain = 0.25});
 		go.animate(go.get_id(), "euler.z", go.PLAYBACK_ONCE_PINGPONG, -10, go.EASING_INCIRC, 0.25)
 	end
-end
-
-function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
 end

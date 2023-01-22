@@ -31,13 +31,6 @@ function init(self)
 	--print(self.naranja)
 end
 
-function final(self)
-	
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
 function update(self, dt)
 	local p = go.get_position()
 	p.x = p.x - self.velocidad * self.dir * dt
@@ -52,13 +45,6 @@ function update(self, dt)
 			go.delete(".", true)
 		end
 	end
-end
-
-function fixed_update(self, dt)
-	-- This function is only called if 'Use Fixed Timestep' is enabled in the Physics section of game.project
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
 end
 
 local function reproducir_sonido(self, que_sonido, cuanto_gain)
