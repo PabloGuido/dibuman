@@ -54,7 +54,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "BIJAMAN"
+  text: "DIBUMAN"
   font: "lowBudgetTitulo"
   id: "bija_titulo"
   xanchor: XANCHOR_NONE
@@ -1225,8 +1225,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Napoleon Bonapete ha sido derrotado.\n"
-  "Una vez mas BIJAMAN  salva el dia."
+  text: "Napoleon Bonapose ha sido derrotado.\n"
+  "Una vez mas DIBUMAN  salva el dia."
   font: "fonfinal"
   id: "texto_final"
   xanchor: XANCHOR_NONE
